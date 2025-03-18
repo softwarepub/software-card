@@ -29,3 +29,11 @@ x-dash img {
     object-fit: cover;
 }
 
+table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+tbody, th, td, tr {
+    border: 1px solid;
+  }

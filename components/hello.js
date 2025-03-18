@@ -11,4 +11,3 @@ class HelloWorldComponent extends HTMLElement {
 export const registerHello = () => {
     customElements.define('x-hello-world', HelloWorldComponent);
 }
-
