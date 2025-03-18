@@ -1,5 +1,11 @@
+@import url("./components/avatar.css");
 body{
     text-align: center;
+}
+x-avatar {
+    position:relative;
+    left:48%;
+
 }
 
 x-dash {
@@ -22,5 +28,4 @@ x-dash img {
     vertical-align: middle;
     object-fit: cover;
 }
-@import url("./components/avatar.css");
-body { font-family: monospace; }
+

@@ -1,3 +1,5 @@
+export const name = "square";
+
 class HelloWorldComponent extends HTMLElement {
     connectedCallback() {
         var s = this.textContent;
