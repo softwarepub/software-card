@@ -1,0 +1,26 @@
+body{
+    text-align: center;
+}
+
+x-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+x-dash[size=lg] {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+x-dash img {
+    border-radius: 9999px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+}
+@import url("./components/avatar.css");
+body { font-family: monospace; }
