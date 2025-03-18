@@ -1,11 +1,8 @@
-import { showMessage } from './components/hello.js';
-
-window.showImportedMessage = function showImportedMessage() {
-    showMessage();
-}
+import { registerHello } from './components/hello.js';
 
 import { registerAvatarComponent } from './components/avatar.js';
 const app = () => {
+    registerHello();
     registerAvatarComponent();
 }
 document.addEventListener('DOMContentLoaded', app);

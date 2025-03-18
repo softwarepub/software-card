@@ -3,7 +3,10 @@ class HelloWorldComponent extends HTMLElement {
         var s = this.textContent;
 
         this.textContent = 'hello '+s;
-        
+
     }
 }
-customElements.define('x-hello-world', HelloWorldComponent);
+export const registerHello = () => {
+    customElements.define('x-hello-world', HelloWorldComponent);
+}
+

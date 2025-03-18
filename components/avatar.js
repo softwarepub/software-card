@@ -28,6 +28,8 @@ class AvatarComponent extends HTMLElement {
     }
 }
 
-export const registerAvatarComponent = () => {
+customElements.define('x-avatar', AvatarComponent);
+
+/*export const registerAvatarComponent = () => {
     customElements.define('x-avatar', AvatarComponent);
-}
+}*/
