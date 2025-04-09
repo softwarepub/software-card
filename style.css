@@ -37,3 +37,10 @@ table {
 tbody, th, td, tr {
     border: 1px solid;
   }
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}

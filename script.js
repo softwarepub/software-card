@@ -1,13 +1,3 @@
-import { name, registerHello } from './components/hello.js';
-import { registerAvatarComponent } from './components/avatar.js';
-const app = () => {
-    registerHello();
-    registerAvatarComponent();
-}
-document.addEventListener('DOMContentLoaded', app);
-
-console.log(name);
-document.getElementById('test').innerHTML = "script war hier "+name;
 fetch(".hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
@@ -40,20 +30,20 @@ fetch(".hermes/process/hermes.json")
 
     })
 
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('radar');
 const ctx = canvas.getContext('2d');
 
 function init() {}
 init();
 const a = 2 * Math.PI / 6;
-const r = 50;
+const r = 30;
 
 function drawHexagon(x, y) {
     ctx.beginPath();
     for (var i = 0; i < 6; i++) {
-      ctx.lineTo(x + r * Math.cos(a * i), y + r * Math.sin(a * i));
+      ctx.lineTo(x+ r * Math.sin(a * i), y + r * Math.cos(a * i));
     }
     ctx.closePath();
     ctx.stroke();
   }
-drawHexagon(window.innerWidth/3,80);
+drawHexagon(canvas.offsetWidth/2,canvas.offsetHeight/2);
