@@ -1,7 +1,32 @@
+
+function extract_info(obj){
+  if(typeof obj === "string" || typeof obj == "number"){
+    return obj;
+  }
+  else{
+    const names = [];
+    obj.forEach(e =>{
+      //const name = e.exec("familyName");
+      names.push(JSON.stringify(e));//.toString());
+      const tooltip = document.createElement("div");
+      const text = document.createTextNode("hi");
+      tooltip.appendChild(text);
+    })
+    /*const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+    const tooltiptext = document.createElement("span");
+    tooltiptext.classList.add("tooltiptext");
+    const text = document.createTextNode(` ${obj[0]} `);
+    tooltiptext.appendChild(text);
+    tooltip.appendChild(tooltiptext);*/
+    return names;
+  }
+}
+
 fetch(".hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("test").innerHTML = data.name;
+        document.getElementById("test").innerHTML = 'Project <b>'+data.name+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
         const tbl = document.createElement("table");
@@ -15,7 +40,7 @@ fetch(".hermes/process/hermes.json")
             const cell = document.createElement("td");
             const cell2 = document.createElement("td");
             const cellText = document.createTextNode(` ${element}`);
-            const cellText2 = document.createTextNode(` ${data[element]}`);
+            const cellText2 = document.createTextNode(` ${extract_info(data[element])}`);
             cell.appendChild(cellText);
             cell2.appendChild(cellText2);
             row.appendChild(cell);
@@ -30,6 +55,8 @@ fetch(".hermes/process/hermes.json")
 
     })
 
+
+
 const canvas = document.getElementById('radar');
 const ctx = canvas.getContext('2d');
 
@@ -38,7 +65,17 @@ init();
 const a = 2 * Math.PI / 6;
 const r = 30;
 
-function drawHexagon(x, y) {
+function drawHexagon(x, y, r=30) {
+    ctx.beginPath();
+    for (var i = 0; i < 6; i++) {
+      ctx.lineTo(x+ r * Math.sin(a * i), y + r * Math.cos(a * i));
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+function drawRadar(x, y, r=30, color="black") {
+    ctx.strokeStyle = color;
     ctx.beginPath();
     for (var i = 0; i < 6; i++) {
       ctx.lineTo(x+ r * Math.sin(a * i), y + r * Math.cos(a * i));
@@ -47,3 +84,5 @@ function drawHexagon(x, y) {
     ctx.stroke();
   }
 drawHexagon(canvas.offsetWidth/2,canvas.offsetHeight/2);
+drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, 25, "green");
+drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, 10, "red");
