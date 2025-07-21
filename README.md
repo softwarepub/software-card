@@ -9,7 +9,7 @@ These pages contain:
 
 You can navigate to the [CI pipelines](https://codebase.helmholtz.cloud/pape58/software-card-gitlab-test/-/pipelines)
 and within any `pages` job click the URL below "Generating dashboard URL ...".
-This will load the associated pipeline into your dashboard.
+This will load the associated pipeline into your Software CaRD dashboard.
 
 ## Host the Pages Locally
 
