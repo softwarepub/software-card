@@ -2,9 +2,12 @@ stages:
   - "deploy"
 
 pages:
+  image: "python:slim"
   stage: "deploy"
   script:
-    - "echo 'Editor app will be available at: https://fwcc.pages.hzdr.de/data-management/forms-generator/'"
+    - "echo 'App will be available at: https://pape58.pages.hzdr.de/software-card-gitlab-test/'"
+    - "echo 'Generating dashboard URL ...'"
+    - python dashboard_url.py
   artifacts:
     paths:
       - "public"
