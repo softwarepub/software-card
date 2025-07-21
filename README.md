@@ -13,3 +13,5 @@ With PHP:
 ```bash
 php -S 127.0.0.1:8000 -t public
 ```
+
+The GitLab pages are hosted at: <https://pape58.pages.hzdr.de/software-card-gitlab-test/>
