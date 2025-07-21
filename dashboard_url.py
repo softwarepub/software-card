@@ -26,4 +26,8 @@ if pipeline_id is None:
     sys.exit(1)
 
 # good enough ;-)
-print(f"{pages_url}?gitlab_project_id={project_id}&gitlab_pipeline_id={pipeline_id}")
+print(
+    f"{pages_url}/callback"
+    f"?gitlab_project_id={project_id}"
+    f"&gitlab_pipeline_id={pipeline_id}"
+)
