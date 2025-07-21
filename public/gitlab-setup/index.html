@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="data:,">
+
+  <script type="module" src="/gitlab-setup/main.js"></script>
+
+  <title>GitLab Account Setup | Software CaRD</title>
+</head>
+
+<body>
+  <h1><a href="/">Software CaRD</a></h1>
+  <h2>GitLab Account Setup</h2>
+  <p>
+    Please click <a href="https://codebase.helmholtz.cloud/-/user_settings/personal_access_tokens"
+      target="_blank">here</a> to create a personal access token.
+    Copy it, paste it in the box below, and click "Save".
+    The token should start with <code>glpat-</code>.
+  </p>
+  <p>
+    The token will be saved in the browser.
+    Do not use this feature on a shared computer account.
+  </p>
+  <p id="already-known"></p>
+  <p>
+    <label for="token-input">Token:</label>
+    <input type="password" id="token-input" name="api-token">
+    <button id="token-save-button">Save</button>
+  </p>
+</body>
+
+</html>

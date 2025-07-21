@@ -1,8 +1,10 @@
-example-job:
-    script:
-        - 'echo $((1 + $RANDOM % 10)) > result.txt'
-    artifacts:
-        paths:
-            - result.txt
-        when: always
-        expire_in: 30 days
+stages:
+  - "deploy"
+
+pages:
+  stage: "deploy"
+  script:
+    - "echo 'Editor app will be available at: https://fwcc.pages.hzdr.de/data-management/forms-generator/'"
+  artifacts:
+    paths:
+      - "public"

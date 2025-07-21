@@ -1,0 +1,19 @@
+:root {
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+    max-width: 32rem;
+    margin: auto;
+}
+
+code {
+    border: 1px solid black;
+}
+
+textarea {
+    width: 100%;
+}
