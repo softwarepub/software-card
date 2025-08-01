@@ -47,9 +47,4 @@ window.onload = async function () {
             return;
         }
     };
-
-    // GitLab
-    //const response = await fetch('https://codebase.helmholtz.cloud/api/v4/users?username=pape58');
-    //const data = await response.json();
-    //console.log(data[0]);
 };
