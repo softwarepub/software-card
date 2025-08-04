@@ -1,8 +1,8 @@
-import { addPipelineIdToQueue } from '/modules/storage.js'
+import { registerPipeline } from '/modules/storage.js'
+
+const showDebugInformation = false;
 
 window.onload = async function () {
-    const showDebugInformation = false;
-
     const parameters = new URL(window.location).searchParams;
 
     if (showDebugInformation) {
@@ -15,10 +15,10 @@ window.onload = async function () {
     const gitLabProjectId = parameters.get("gitlab_project_id");
     const gitLabPipelineId = parameters.get("gitlab_pipeline_id");
 
-    addPipelineIdToQueue(gitLabProjectId, gitLabPipelineId)
+    await registerPipeline(gitLabProjectId, gitLabPipelineId);
 
     if (showDebugInformation) {
-        await new Promise(r => setTimeout(r, 7000));
+        await new Promise(r => setTimeout(r, 5000));
     }
 
     // TODO: Redirect to dashboard (or login) instead
