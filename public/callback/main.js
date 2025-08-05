@@ -14,8 +14,9 @@ window.onload = async function () {
 
     const gitLabProjectId = parameters.get("gitlab_project_id");
     const gitLabPipelineId = parameters.get("gitlab_pipeline_id");
+    const gitLabJobId = parameters.get("gitlab_job_id");
 
-    await registerPipeline(gitLabProjectId, gitLabPipelineId);
+    await registerPipeline(gitLabProjectId, gitLabPipelineId, gitLabJobId);
 
     if (showDebugInformation) {
         await new Promise(r => setTimeout(r, 5000));

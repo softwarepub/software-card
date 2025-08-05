@@ -30,13 +30,18 @@ function getStoreIndex(store, indexName) {
     });
 }
 
-function addPipelineToQueue(store, index, gitLabProjectId, gitLabPipelineId) {
+function addPipelineToQueue(queue, index, gitLabProjectId, gitLabPipelineId, gitLabJobId) {
     return new Promise((resolve, reject) => {
         var search = index.get([gitLabPipelineId]);
 
         search.onsuccess = (event) => {
             if (!event.target.result) {
-                store.put({ projectId: gitLabProjectId, pipelineId: gitLabPipelineId, imported: false });
+                queue.put({
+                    projectId: gitLabProjectId,
+                    pipelineId: gitLabPipelineId,
+                    jobId: gitLabJobId,
+                    imported: false
+                });
             }
             resolve();
         };
@@ -45,15 +50,43 @@ function addPipelineToQueue(store, index, gitLabProjectId, gitLabPipelineId) {
     });
 }
 
-async function registerPipeline(gitLabProjectId, gitLabPipelineId) {
+async function registerPipeline(gitLabProjectId, gitLabPipelineId, gitLabJobId) {
     try {
         var database = await getDatabase();
         var queue = await getDatabaseStore(database, "PipelineQueue");
         var index = await getStoreIndex(queue, "PipelineIdIndex");
-        addPipelineToQueue(queue, index, gitLabProjectId, gitLabPipelineId);
+        addPipelineToQueue(queue, index, gitLabProjectId, gitLabPipelineId, gitLabJobId);
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
+}
+
+function getUnregisteredPipelineFromQueue(queue) {
+    return new Promise((resolve, reject) => {
+        var pipelines = queue.getAll();
+
+        pipelines.onsuccess = (event) => {
+            for (const pipeline of event.target.result) {
+                if (!pipeline.imported) {
+                    resolve([pipeline.projectId, pipeline.pipelineId, pipeline.jobId]);
+                }
+            }
+            resolve(null);
+        };
+
+        pipelines.onerror = (event) => { reject("Search for unimported pipelines failed") };
+    });
+}
+
+async function retrievePipeline() {
+    try {
+        var database = await getDatabase();
+        var queue = await getDatabaseStore(database, "PipelineQueue");
+        return getUnregisteredPipelineFromQueue(queue);
+    } catch (error) {
+        console.error(error);
+    }
+    return new Promise();
 }
 
 function deleteDatabase(name) {
@@ -73,4 +106,4 @@ async function deleteAllPipelines() {
     }
 }
 
-export { registerPipeline, deleteAllPipelines }
+export { registerPipeline, retrievePipeline, deleteAllPipelines }

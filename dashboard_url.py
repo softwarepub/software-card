@@ -25,9 +25,15 @@ if pipeline_id is None:
     print("CI_PIPELINE_ID ?", file=sys.stderr)
     sys.exit(1)
 
+job_id = os.environ.get("CI_JOB_ID")
+if job_id is None:
+    print("CI_JOB_ID ?", file=sys.stderr)
+    sys.exit(1)
+
 # good enough ;-)
 print(
     f"{pages_url}/callback"
     f"?gitlab_project_id={project_id}"
     f"&gitlab_pipeline_id={pipeline_id}"
+    f"&gitlab_job_id={job_id}"
 )
