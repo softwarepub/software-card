@@ -66,4 +66,12 @@ window.onload = async function () {
 
     const reportContentsTextArea = document.getElementById("report-contents");
     reportContentsTextArea.value = reportText;
+
+    // --- "Parse" the RDF ---
+
+    // I couldn't get rdfjs to work from a CDN... So let's just do this:
+    const reportConforms = reportText.includes("sh:conforms true");
+
+    const reportConformsParagraph = document.getElementById("report-conforms");
+    reportConformsParagraph.innerText = `Report conforms: ${reportConforms}.`;
 };

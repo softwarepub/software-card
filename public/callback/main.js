@@ -25,6 +25,7 @@ window.onload = async function () {
     const token = localStorage.getItem("gitlab-api-token");
     if (token) {
         window.location = "/dashboard/";
+        return;
     } else {
         alert("Please set up the GitLab connection, then go to the dashboard!");
         window.location = "/gitlab-setup/";
