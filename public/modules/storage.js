@@ -7,7 +7,10 @@ function getDatabase() {
 
             var pipelineQueue = database.createObjectStore("PipelineQueue", { autoIncrement: true });
             pipelineQueue.createIndex("PipelineIdIndex", ["pipelineId"]);
-            pipelineQueue.createIndex("PipelineImportedIndex", ["imported"]);
+
+            // It would also be nice to have an index to return only entries where imported: false.
+            // However, booleans are not valid keys. See:
+            // https://w3c.github.io/IndexedDB/#key-construct
         };
 
         open.onerror = (event) => { reject("Couldn't open IndexedDB") };

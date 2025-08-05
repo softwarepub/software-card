@@ -26,11 +26,8 @@ window.onload = async function () {
             }
 
             const response = await fetch("https://codebase.helmholtz.cloud/api/v4/user", {
-                headers: {
-                    "Content-Type": "application/json",
-                    "PRIVATE-TOKEN": token,
-                }
-            })
+                headers: { "Content-Type": "application/json", "PRIVATE-TOKEN": token }
+            });
 
             if (!response.ok) {
                 alert("Could not authenticate");
