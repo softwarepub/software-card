@@ -22,7 +22,12 @@ window.onload = async function () {
         await new Promise(r => setTimeout(r, 5000));
     }
 
-    // TODO: Redirect to dashboard (or login) instead
-    // TODO: Remove this callback page from the browser history?
-    window.location = "/";
+    const token = localStorage.getItem("gitlab-api-token");
+    if (token) {
+        window.location = "/dashboard/";
+    } else {
+        alert("Please set up the GitLab connection, then go to the dashboard!");
+        window.location = "/gitlab-setup/";
+        return;
+    }
 }
