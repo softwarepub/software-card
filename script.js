@@ -40,7 +40,7 @@ function extract_info(element, obj){
   }
 }
 
-fetch(".hermes/process/hermes.json")
+fetch("https://raw.githubusercontent.com/SKernchen/SoftwareCaRD-test/refs/heads/main/.hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
         document.getElementById("test").innerHTML = 'Project <b>'+data.name+'</b>';
