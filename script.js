@@ -5,37 +5,28 @@ const app = () => {
     registerDashComponent();
 }
 document.addEventListener('DOMContentLoaded', app);
-
 function extract_info(element, obj){
   if(typeof obj === "string" || typeof obj == "number"){
     element.appendChild(document.createTextNode(` ${obj}`));
-    //return element;
   }
   else if(Object.keys(obj[0]).includes("familyName")){
-    const names = [];
     obj.forEach(e =>{
       //const name = e.exec("familyName");
-      names.push(JSON.stringify(e));//.toString());
       const tooltip = document.createElement("div");
       tooltip.classList.add("tooltip");
-      const tooltiptext = document.createElement("span");
+      const tooltiptext = document.createElement("div");
       tooltiptext.classList.add("tooltiptext");
       const text = document.createTextNode(`${e.familyName}, ${e.givenName} `);
-      tooltiptext.appendChild(document.createTextNode(`${JSON.stringify(e)}`));
+      if(e.familyName === "Sophie"){
+        tooltip.className += " error"
+      }
+      const data = JSON.stringify(e, null, 2);
+      tooltiptext.appendChild(document.createTextNode(`${data.replaceAll("{","\t").replaceAll("}","\t")}`)); //{.*\n*\t*.*\n*}
       tooltip.appendChild(tooltiptext);
-      //const text = document.createTextNode(` ${e.familyName}, ${e.givenName}`);
       tooltip.appendChild(text);
       element.appendChild(tooltip);
     })
-    
-    /*const tooltip = document.createElement("div");
-    tooltip.classList.add("tooltip");
-    const tooltiptext = document.createElement("span");
-    tooltiptext.classList.add("tooltiptext");
-    const text = document.createTextNode(` ${obj[0]} `);
-    tooltiptext.appendChild(text);
-    tooltip.appendChild(tooltiptext);*/
-    return names;
+
   }
   else{
     const names = [];
