@@ -1,4 +1,4 @@
-import { extract_info } from "../extract.js";
+import { extract_info } from "./extract.js";
 
 export function displayJSON(json_document){
 fetch(json_document)//.hermes/process/hermes.json")
