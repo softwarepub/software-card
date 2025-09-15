@@ -32,7 +32,7 @@ function extract_info(element, obj){
     const names = [];
     obj.forEach(e =>{
       //const name = e.exec("familyName");
-      names.push(JSON.stringify(e));//.toString());
+      names.push(JSON.stringify(e).replaceAll("{","\t").replaceAll("}","\t"));
       
     })
     const text = document.createTextNode(` ${names}`);
@@ -40,7 +40,7 @@ function extract_info(element, obj){
   }
 }
 
-fetch(".hermes/process/hermes.json")
+fetch("https://raw.githubusercontent.com/SKernchen/SoftwareCaRD-test/refs/heads/main/.hermes/process/hermes.json")//.hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
         document.getElementById("test").innerHTML = 'Project <b>'+data.name+'</b>';
@@ -92,15 +92,19 @@ function drawHexagon(x, y, r=30) {
     ctx.stroke();
   }
 
-function drawRadar(x, y, r=30, color="black") {
+function drawRadar(x, y, r=[30,40,20,30,30,30], color="black", fillcolor="rgba(255, 255, 255, 1)") {
     ctx.strokeStyle = color;
+    ctx.fillStyle = fillcolor;
     ctx.beginPath();
     for (var i = 0; i < 6; i++) {
-      ctx.lineTo(x+ r * Math.sin(a * i), y + r * Math.cos(a * i));
+      ctx.lineTo(x+ r[i] * Math.sin(a * i), y + r[i] * Math.cos(a * i));
     }
     ctx.closePath();
     ctx.stroke();
+    ctx.fill();
   }
 drawHexagon(canvas.offsetWidth/2,canvas.offsetHeight/2);
-drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, 25, "green");
-drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, 10, "red");
+drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, [21,25,20,27,25,25], "green");
+drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, [15,15,10,15,15,12], "red");
+drawRadar(canvas.offsetWidth/2,canvas.offsetHeight/2, [20,20,9,10,20,15], "blue", "rgba(94, 148, 215, 0.34)");
+
