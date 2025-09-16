@@ -1,5 +1,5 @@
-import {drawHexagon, drawRadar } from "./radar.js";
-import { displayJSON } from "./src/curation.js";
+import {drawHexagon, drawRadar } from "../radar.js";
+import { displayJSON } from "./curation.js";
 
 
 //Draw radar plot
