@@ -29,6 +29,13 @@ button{
     justify-content: center;
     padding: 1%;
 }
+
+#content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .elements{
     display: flex;
     align-items: flex-end;
