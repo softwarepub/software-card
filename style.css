@@ -32,13 +32,13 @@ button{
 
 #content{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 }
 
 .elements{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     flex-direction: column;
     flex-wrap: nowrap;

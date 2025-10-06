@@ -1,31 +1,33 @@
-let tags;
-fetch("../.hermes/process/tags.json")
-.then(response => response.json()).then(
-  function(json){
-    tags = json;
-  }
-)
-
 function extract_info(element, obj, tag, category){
-
+  fetch("../.hermes/process/tags.json")//.hermes/process/hermes.json")
+  .then(response => response.json())
+  .then(tags => {
     if(typeof obj === "string" || typeof obj == "number"){
       element.appendChild(document.createTextNode(` ${obj}`));
       tag.appendChild(document.createTextNode(`${tags[category]["local_path"]}`));
     }
     else if(typeof obj === "object" && Array.isArray(obj) === false){
       element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
-      tag.appendChild(document.createTextNode(`Hoho  ${tags}`));
+      tag.appendChild(document.createTextNode("Blocker"));
     }
     else if(Array.isArray(obj) && Object.keys(obj[0]).includes("familyName")){
+      const divTag = document.createElement("div");
+      divTag.classList.add("elements");
       obj.forEach(e =>{
         //const name = e.exec("familyName");
         extract_person(e, element);
+        const tag = document.createElement("div");
+        tag.classList.add("tooltip");
+        tag.appendChild(document.createTextNode("See Person"));
+        divTag.appendChild(tag);
       })
-  
+      tag.appendChild(divTag);
     }
     else{
       const names = [];
       const div = document.createElement("div");
+      div.classList.add("elements");
+      const divTag = document.createElement("div");
       div.classList.add("elements");
       obj.forEach(e =>{
   
@@ -33,12 +35,17 @@ function extract_info(element, obj, tag, category){
         const element = document.createElement("div");
         element.appendChild(document.createTextNode(` ${JSON.stringify(e).replaceAll("{","").replaceAll("}","").replaceAll('"',"")}`));
         div.appendChild(element);
+
+        const tag = document.createElement("div");
+        tag.appendChild(document.createTextNode("Blocker"));
+        divTag.appendChild(tag);
       })
       //const text = document.createTextNode(` ${names}`);
       element.appendChild(div);
-      tag.appendChild(document.createTextNode(`Hihi  ${tags}`));
+      tag.appendChild(divTag);
     }
-  }
+  })
+}
 
   function extract_person(e, element){
     const tooltip = document.createElement("div");
@@ -58,12 +65,16 @@ function extract_info(element, obj, tag, category){
   }
 
   function link_to_person(data){
-    document.body.innerHTML = '<p id="test"></p><div id="content>"<div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
+    document.body.innerHTML = '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
         document.getElementById("test").innerHTML = 'Person <b>'+data.familyName+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
         const tbl = document.createElement("table");
         const tblBody = document.createElement("tbody");
+        
+        const tags = document.getElementById("tags");
+        const tblTags = document.createElement("table");
+        const tblBodyTags = document.createElement("tbody");
       
         // creating all cells
         keys.forEach(element => {
@@ -74,12 +85,12 @@ function extract_info(element, obj, tag, category){
             const cell = document.createElement("td");
             const cell2 = document.createElement("td");
             const cellText = document.createTextNode(` ${element}`);
-            const cellText2 = document.createElement(` ${halo}`);
+            const cellText2 = document.createElement('div');
 
             const cellTag = document.createElement("td");
             const cellTextTag = document.createElement('div');
 
-            extract_info(cellText2, data[element], cellTextTag, element);
+            extract_info(cellText2, data[element], cellTextTag, "author[0]."+element);
             //cellText2.appendChild(document.createTextNode(` ${data.affiliation[element]}`));
             cell.appendChild(cellText);
             cell2.appendChild(cellText2);
