@@ -1,4 +1,4 @@
-import { retrievePipeline } from "/modules/storage.js";
+import { retrievePipeline } from "../modules/storage.js";
 import { BlobReader, TextWriter, ZipReader } from "https://cdn.jsdelivr.net/npm/@zip.js/zip.js@2.7.72/+esm";
 
 const showDebugInformation = false;

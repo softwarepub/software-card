@@ -40,7 +40,7 @@ window.onload = async function () {
             localStorage.setItem("gitlab-name", userData["name"]);
             localStorage.setItem("gitlab-api-token", token);
 
-            window.location = "/";
+            window.location = "./";
             return;
         }
     };

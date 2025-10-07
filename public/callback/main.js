@@ -1,4 +1,4 @@
-import { registerPipeline } from '/modules/storage.js'
+import { registerPipeline } from '../modules/storage.js'
 
 const showDebugInformation = false;
 
