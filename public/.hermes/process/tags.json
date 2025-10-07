@@ -1,0 +1,332 @@
+{
+  "@context": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[0].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[1].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[2].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[3].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[4].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[5].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].@id": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].affiliation.@type": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].affiliation.legalName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].familyName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].givenName": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "author[6].email": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "description": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "license": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "name": {
+    "plugin": "codemeta",
+    "local_path":"codemeta.meta",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  },
+  "version": {
+    "plugin": "cff",
+    "local_path": "CITATION.cff",
+    "timestamp": "2025-03-18T13:28:37.657148",
+    "harvester": "cff"
+  }
+}
