@@ -1,4 +1,4 @@
-import { deleteAllPipelines } from "/modules/storage.js";
+import { deleteAllPipelines } from "./modules/storage.js";
 
 window.onload = async function () {
     const gitLabName = localStorage.getItem("gitlab-name");
