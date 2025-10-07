@@ -1,19 +1,88 @@
-:root {
-    font-family: sans-serif;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 1.4;
+@charset "UTF-8";
+
+body{
+    text-align: center;
 }
 
-body {
-    max-width: 32rem;
-    margin: auto;
+table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+tbody {
+    border: 1px solid;
 }
 
-code {
-    border: 1px solid black;
+th, td, tr {
+    border: 1px solid;
+    padding-inline: 10px;
+  }
+
+button{
+    position: relative;
+    top: 10px;
 }
 
-textarea {
-    width: 100%;
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+#content{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.elements{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+}
+
+.tooltip {
+    position: relative;
+    border-bottom: 1px dotted black;
+    white-space:pre-wrap;
+  }
+  
+.tooltip .tooltiptext {
+visibility: hidden;
+background-color: #555;
+color: #fff;
+text-align: center;
+position: absolute;
+z-index: 1;
+bottom: 125%;
+left:20%;
+translate: -12%;
+opacity: 0;
+transition: opacity 0.3s;
+
+}
+
+.tooltip .tooltiptext::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+opacity: 1;
+}
+
+.error{
+    color: red;
 }
