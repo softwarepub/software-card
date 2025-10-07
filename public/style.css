@@ -3,9 +3,13 @@
 body{
     text-align: center;
 }
-
 h1{
-    text-decoration: none;
+  background: -webkit-linear-gradient(166.66deg, rgb(34, 198, 227) 4.62%, rgb(23, 124, 207) 10.62%, rgb(116, 75, 196) 86.29%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+a{
+    text-decoration: none; 
   }
 
 table {
