@@ -1,0 +1,4 @@
+.idea/
+# Ignoring all HERMES cache files
+.hermes/
+hermes.log
