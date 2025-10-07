@@ -12,6 +12,6 @@ window.onload = async function () {
         localStorage.clear();
         console.log("Local storage cleared");
         await deleteAllPipelines();
-        window.location = "/";
+        window.location = "./";
     }
 }
