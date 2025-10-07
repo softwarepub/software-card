@@ -15,7 +15,7 @@ window.onload = async function () {
         const token = tokenInput.value.trim();
         if (token) {
             if (token === savedToken) {
-                window.location = "/";
+                window.location = "../";
                 return;
             }
 
