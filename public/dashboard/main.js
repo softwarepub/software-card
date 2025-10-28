@@ -7,7 +7,7 @@ window.onload = async function () {
     const token = localStorage.getItem("gitlab-api-token");
     if (!token) {
         alert("Please set up the GitLab connection first!");
-        window.location = "/";
+        window.location = "./";
         return;
     }
 

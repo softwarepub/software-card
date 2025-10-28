@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/software-card/style.css">
+  <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="./pictures/Logo.png" type="image/icon type">
 
   <script type="module" src="./main.js"></script>
@@ -22,6 +22,8 @@
     <li>Set up the <a href="./gitlab-setup/">connection to your GitLab account</a>.</li>
     <li>Load an <a href="./callback?gitlab_project_id=17500&gitlab_pipeline_id=570319&gitlab_job_id=2350529">
         example CI pipeline</a>.</li>
+    <li>Load the <a href="./callback?gitlab_project_id=17500&latest=1">
+      newest CI pipeline</a>.</li>
     <li>See your <a href="./dashboard/">dashboard</a>.</li>
     <li>See your <a href="./curation/">curation view</a>.</li>
     <li>See your <a href="./reporting/">reporting view</a>.</li>
@@ -29,6 +31,7 @@
   </p>
   <hr>
   <button id="clear-all-data-button">Clear all data</button>
+  <button id="clear-pipeline-button">Clear pipeline data</button>
 </body>
 
 </html>
