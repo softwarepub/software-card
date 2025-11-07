@@ -19,14 +19,14 @@ window.onload = async function () {
                 return;
             }
 
-            if (!token.startsWith("glpat")) {
-                alert("Token is invalid");
-                location.reload();
-                return;
-            }
+            // if (!token.startsWith("glpat")) {
+            //     alert("Token is invalid");
+            //     location.reload();
+            //     return;
+            // }
 
             const response = await fetch("https://codebase.helmholtz.cloud/api/v4/user", {
-                headers: { "Content-Type": "application/json", "PRIVATE-TOKEN": token }
+                headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}`, "PRIVATE-TOKEN": token }
             });
 
             if (!response.ok) {
@@ -75,6 +75,7 @@ window.onload = async function () {
         return u.href;
     }
 
+    // Start OAuth
     async function startLogin(app_name) {
         const base_url = GITLAB_APP_URLS[app_name]
         const client_id = GITLAB_APP_IDS[app_name]
@@ -104,7 +105,7 @@ window.onload = async function () {
         location.assign(auth_url);
     }
 
-    // Callback
+    // OAuth Callback
     async function handleCallback() {
         const url = new URL(location.href);
         const code  = url.searchParams.get("code");
@@ -125,8 +126,6 @@ window.onload = async function () {
 
         console.debug("Getting token from", app_name) 
 
-        document.querySelector("#token-output").textContent = "Waiting for token ..."
-
         const body = new URLSearchParams({
             client_id: client_id,
             grant_type: "authorization_code",
@@ -141,8 +140,8 @@ window.onload = async function () {
             body
         });
         if (!resp.ok) {
-            console.debug("Fail: ", app_name)
-            document.querySelector("#token-output").textContent = "Token exchange failed:\n" + await resp.text();
+            alert("Token exchange failed");
+            location.reload();
             return;
         }
         const token = await resp.json();
@@ -150,18 +149,21 @@ window.onload = async function () {
         // clean up url
         history.replaceState({}, "", REDIRECT_URI);
 
-        // show token
-        document.querySelector("#token-output").textContent = token.access_token ?? "(no access_token)";
-        if (token.access_token) {
-            return;
-        }
+        // save token
+        var tokenInput = document.getElementById("token-input");
+        var saveButton = document.getElementById("token-save-button");
+        console.debug("Token received: ", token.access_token)
+        tokenInput.value = token.access_token;
+        saveButton.onclick();
     }
 
+    // connect buttons
     document.getElementById("oauth-helmholtz-button").onclick = () => startLogin("helmholtz");
-
     document.getElementById("oauth-jugit-button").onclick = () => startLogin("jugit");
 
     handleCallback().catch(err => {
-        document.querySelector("#token-output").textContent = "Error:\n" + (err?.message || err);
+        alert("Error:\n" + (err?.message || err));
+        location.reload();
+        return;
     });
 };
