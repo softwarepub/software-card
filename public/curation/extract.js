@@ -1,10 +1,15 @@
 function extract_info(element, obj, tag, category){
-  fetch("../.hermes/process/tags.json")//.hermes/process/hermes.json")
-  .then(response => response.json())
-  .then(tags => {
-    if(typeof obj === "string" || typeof obj == "number"){
-      element.appendChild(document.createTextNode(` ${obj}`));
-      tag.appendChild(document.createTextNode(`${tags[category]["local_path"]}`));
+      const div = document.createElement("div");
+      div.classList.add("elements");
+      const divTag = document.createElement("div");
+      div.classList.add("elements");
+      div.appendChild(document.createTextNode(` ${obj[category]}`));
+      divTag.appendChild(document.createTextNode(`${obj.meta["plugin"]}`));
+      element.appendChild(div);
+      tag.appendChild(divTag);
+    /*if(typeof obj[obj] === "string" || typeof obj == "number"){
+      element.appendChild(document.createTextNode(` ${obj[obj]}`));
+      tag.appendChild(document.createTextNode(`${obj[metadata]["local_path"]}`));
     }
     else if(typeof obj === "object" && Array.isArray(obj) === false){
       element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
@@ -43,8 +48,7 @@ function extract_info(element, obj, tag, category){
       //const text = document.createTextNode(` ${names}`);
       element.appendChild(div);
       tag.appendChild(divTag);
-    }
-  })
+    }*/
 }
 
   function extract_person(e, element){
