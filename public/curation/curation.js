@@ -5,7 +5,7 @@ export function displayJSON(json_document){
 fetch(json_document)//.hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("test").innerHTML = 'Project <b>'+data.name+'</b>';
+        document.getElementById("test").innerHTML = 'Project <b>'+data.name.name+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
         const tags = document.getElementById("tags");
@@ -30,8 +30,8 @@ fetch(json_document)//.hermes/process/hermes.json")
 
             const cellTag = document.createElement("td");
             const cellTextTag = document.createElement('div');
-
             extract_info(cellText2, data[element], cellTextTag, element);
+
             cell.appendChild(cellText);
             cell2.appendChild(cellText2);
             row.appendChild(cell);

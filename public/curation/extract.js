@@ -1,68 +1,77 @@
 function extract_info(element, obj, tag, category){
       const div = document.createElement("div");
-      div.classList.add("elements");
       const divTag = document.createElement("div");
-      div.classList.add("elements");
-      div.appendChild(document.createTextNode(` ${obj[category]}`));
-      divTag.appendChild(document.createTextNode(`${obj.meta["plugin"]}`));
-      element.appendChild(div);
-      tag.appendChild(divTag);
-    /*if(typeof obj[obj] === "string" || typeof obj == "number"){
-      element.appendChild(document.createTextNode(` ${obj[obj]}`));
-      tag.appendChild(document.createTextNode(`${obj[metadata]["local_path"]}`));
-    }
-    else if(typeof obj === "object" && Array.isArray(obj) === false){
-      element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
-      tag.appendChild(document.createTextNode("Blocker"));
-    }
-    else if(Array.isArray(obj) && Object.keys(obj[0]).includes("familyName")){
-      const divTag = document.createElement("div");
-      divTag.classList.add("elements");
-      obj.forEach(e =>{
-        //const name = e.exec("familyName");
-        extract_person(e, element);
-        const tag = document.createElement("div");
-        tag.classList.add("tooltip");
-        tag.appendChild(document.createTextNode("See Person"));
-        divTag.appendChild(tag);
-      })
-      tag.appendChild(divTag);
-    }
-    else{
-      const names = [];
-      const div = document.createElement("div");
-      div.classList.add("elements");
-      const divTag = document.createElement("div");
-      div.classList.add("elements");
-      obj.forEach(e =>{
-  
-        names.push(JSON.stringify(e).replaceAll("{","").replaceAll("}",""));
-        const element = document.createElement("div");
-        element.appendChild(document.createTextNode(` ${JSON.stringify(e).replaceAll("{","").replaceAll("}","").replaceAll('"',"")}`));
-        div.appendChild(element);
+      if(obj[category]){
+        if(typeof obj[category] === "string" || typeof obj[category] == "number"){
+          div.appendChild(document.createTextNode(` ${obj[category]}`));
+        }else if(Array.isArray(obj[category])){
+          if(Array.isArray(obj[category][0]) && Object.keys(obj[category][0]).includes("familyName")){
+            obj[category].forEach(e =>{
+              const element = document.createElement("div");
+              extract_person(e, element);
+              div.appendChild(element);
 
-        const tag = document.createElement("div");
-        tag.appendChild(document.createTextNode("Blocker"));
-        divTag.appendChild(tag);
-      })
-      //const text = document.createTextNode(` ${names}`);
+            })
+          }
+          obj[category].forEach(e =>{
+            //const name = e.exec("familyName");
+            const element = document.createElement("div");
+            element.appendChild(document.createTextNode(` ${JSON.stringify(e).replaceAll("{","").replaceAll("}","").replaceAll('"',"")}`));
+            div.appendChild(element);
+      
+          })
+
+        }else{
+            const element = document.createElement("div");
+            element.appendChild(document.createTextNode(` ${JSON.stringify(obj[category])}`));
+            div.appendChild(element);
+        }
+      }else{
+        if(Array.isArray(obj) && Object.keys(obj[0]).includes("familyName")){
+          obj.forEach(e =>{
+            const element = document.createElement("div");
+            console.log(e, element);
+            extract_person(e, element);
+            div.appendChild(element);
+
+          })
+        }else{
+          const element = document.createElement("div");
+          element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
+          div.appendChild(element);
+        }
+      }
+
+      if(Object.keys(obj).includes("meta")){
+
+        divTag.appendChild(document.createTextNode(`${obj.meta["local_path"]}`));
+      }else{
+        divTag.appendChild(document.createTextNode(`See Details`));
+      }
       element.appendChild(div);
       tag.appendChild(divTag);
-    }*/
-}
+    }
 
   function extract_person(e, element){
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip");
-    tooltip.onclick = function(){link_to_person(e)};
+    //tooltip.onclick = function(){link_to_person(e)};
     const tooltiptext = document.createElement("div");
     tooltiptext.classList.add("tooltiptext");
-    const text = document.createTextNode(`${e.familyName}, ${e.givenName} `);
-    if(e.familyName === "Sophie"){
+    const text = document.createTextNode(`${e.familyName.familyName}, ${e.givenName.givenName} `);
+    if(e.familyName.familyName === "Sophie"){
       tooltip.className += " error"
     }
-    const data = JSON.stringify(e, null, 2);
-    tooltiptext.appendChild(document.createTextNode(`${data.replaceAll("{","\t").replaceAll("}","\t")}`)); //{.*\n*\t*.*\n*}
+    //const data = JSON.stringify(e, null, 2);
+    
+    const names = [];
+    Object.keys(e).forEach(k => {
+      if (Object.keys(e[k]).includes(k)){
+        names.push(`${k}:  ${e[k][k]}`); 
+      }
+    })
+    console.log(names);
+    tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`)); //{.*\n*\t*.*\n*}
     tooltip.appendChild(tooltiptext);
     tooltip.appendChild(text);
     element.appendChild(tooltip);
