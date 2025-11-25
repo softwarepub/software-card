@@ -94,3 +94,7 @@ opacity: 1;
 .error{
     color: red;
 }
+
+.hidden {
+    display: none;
+}

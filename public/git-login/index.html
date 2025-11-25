@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="data:,">
+  <link rel="icon" href="../pictures/Logo.png" type="image/icon type">
+
+  <script type="module" src="./main.js"></script>
+
+  <title>GitLab Account Setup | Software CaRD</title>
+</head>
+
+<body>
+  <h1><a href="../">Software CaRD</a></h1>
+  <h3>GitLab Account Setup</h3>
+  <div class="section" id="platform-section">
+    <label for="platform-select">Choose a platform:</label>
+    <select id="platform-select" aria-label="Choose OAuth platform">
+      <option value="" disabled selected>— Select a platform —</option>
+      <!-- Options are generated automatically -->
+    </select>
+    <p class="thin" id="platform-hint"></p>
+  </div>
+  <div id="auth-ui" class="hidden">
+    <p>
+      Please click <a id="token-link" href="https://codebase.helmholtz.cloud/-/user_settings/personal_access_tokens"
+        target="_blank">here</a> to create a personal access token.
+      Copy it, paste it in the box below, and click "Save".
+      The token should start with <code>glpat-</code>.
+    </p>
+    <p>
+      The token will be saved in the browser.
+      Do not use this feature on a shared computer account.
+    </p>
+    <p id="already-known"></p>
+    <p>
+      <label for="token-input">Token:</label>
+      <input type="password" id="token-input" name="api-token">
+      <button id="token-save-button">Save</button>
+      <br><br>
+    </p>
+    <p>
+      Alternatively you can use OAuth:
+    </p>
+    <button id="oauth-button">Connect to ((platform-label))</button>
+  </div>
+</body>
+
+</html>
