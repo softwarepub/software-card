@@ -1,0 +1,50 @@
+@prefix codemeta: <https://doi.org/10.5063/schema/codemeta-2.0#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode [ a rdfs:Resource,
+                        schema:SoftwareSourceCode ;
+                    codemeta:readme "https://raw.githubusercontent.com/softwarepub/hermes/proof-of-concept/README.md"^^schema:URL ;
+                    schema:author [ a rdfs:Resource,
+                                schema:Organization ;
+                            schema:name "HERMES Team" ],
+                        [ a rdfs:Resource,
+                                schema:Person ;
+                            schema:affiliation [ a rdfs:Resource,
+                                        schema:Organization ;
+                                    schema:legalName "Helmholtz Federated IT Services (HIFIS)" ] ;
+                            schema:email "gitlab-admin+bot@hzdr.de" ;
+                            schema:givenName "HIFIS Bot" ],
+                        <https://orcid.org/0000-0001-6372-3853>,
+                        <https://orcid.org/0000-0001-8174-7795>,
+                        <https://orcid.org/0000-0002-2702-3419>,
+                        <https://orcid.org/0000-0002-3145-9880>,
+                        <https://orcid.org/0000-0003-1761-2591>,
+                        <https://orcid.org/0000-0003-4925-7248> ;
+                    schema:codeRepository "https://github.com/hermes-hmc/hermes"^^schema:URL ;
+                    schema:description "Proof-of-concept implementation of the HERMES workflow." ;
+                    schema:hasPart [ a rdfs:Resource,
+                                schema:CreativeWork ;
+                            schema:associatedMedia [ a rdfs:Resource,
+                                        schema:TextObject ;
+                                    schema:encodingFormat "text/markdown" ;
+                                    schema:url "https://raw.githubusercontent.com/softwarepub/hermes/proof-of-concept/README.md"^^schema:URL ] ;
+                            schema:name "README" ] ;
+                    schema:license "https://spdx.org/licenses/Apache-2.0" ;
+                    schema:version "proof-of-concept" ] ;
+            sh:resultMessage "String length not >= Literal(\"100\", datatype=xsd:integer)" ;
+            sh:resultPath schema:description ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinLengthConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:description "The software description must have a certain length." ;
+                    sh:minLength 100 ;
+                    sh:name "Long description" ;
+                    sh:path schema:description ] ;
+            sh:value "Proof-of-concept implementation of the HERMES workflow." ] .
+

@@ -1,0 +1,483 @@
+{  "@context":[ [
+      "https://doi.org/10.5063/schema/codemeta-2.0",
+      {
+        "hermes": "https://software-metadata.pub/ns/hermes/",
+        "swcard": "tba"
+      }
+    ],
+        {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"},
+      {"conflict:":"None"}   
+  ]
+    ,
+  "@type":[ "SoftwareSourceCode",
+  	  {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"
+      },
+     {"conflict": "Policy 1"}
+  ],
+    "author": [
+      {
+        "@id": ["https://orcid.org/0000-0001-6372-3853",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff",
+          "alternative_source":{"plugin": "codemeta",
+                                "value": "https://orcid.org/0000-0001-2345-6789",
+                                  "local_path": "codemeta.md",
+                                  "timestamp": "2025-04-18T13:28:37.657148",
+                                "harvester": "codemeta"}
+          },
+         {"conflict": "Curation"}
+        ],
+        "@type": ["Person",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+        ],
+        "affiliation": {
+          "@type": ["Organization",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+        ],
+        "@legalName": ["German Aerospace Center (DLR)",
+            {
+            "plugin": "codemeta",
+            "local_path": "codemeta.md",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "codemeta"
+          },
+          {"conflict": "None"}
+        ]
+          
+        },
+          "familyName": ["Meinel",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "givenName": [ "Michael",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "email": ["michael.meinel@dlr.de",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+         ]
+      },
+      
+      {
+        "@id":[ "https://orcid.org/0000-0003-4925-7248",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+         ] ,
+        "@type": ["Person",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+        ],
+        "affiliation": {
+          "@type": ["Organization",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+          "@legalName": ["German Aerospace Center (DLR)",
+            {
+            "plugin": "codemeta",
+            "local_path": "codemeta.md",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "codemeta",
+                      "alternative_source":{"plugin": "cff",
+                      "value": "Deutsches Zentrum fuer Luft- und Raumfahrt e.V.",
+                        "local_path": "CITATION.cff",
+                        "timestamp": "2025-04-18T13:28:37.657148",
+                      "harvester": "cff"}
+          },
+          {"conflict": "Curation"}
+            ]
+          
+        },
+        "familyName": ["Druskat",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "givenName": ["Stephan",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "email": ["stephan.druskat@dlr.de",
+            {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ]
+      },
+      {
+        "@id": ["https://orcid.org/0000-0002-2702-3419",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+        {"conflict": "None"}
+        ],
+        "@type":[ "Person",
+        {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+        ],
+        "affiliation": {
+          "@type": ["Organization",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "@legalName": ["Forschungszentrum J\u00c3\u00bclich",
+          {
+            "plugin": "codemeta",
+            "local_path": "codemeta.md",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "codemeta"
+          },
+          {"conflict": "None"}      
+          ]
+        },
+        "familyName": ["Bertuch",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "givenName": ["Oliver",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "email": ["o.bertuch@fz-juelich.de",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ]
+      },     
+      {
+      "@id": ["https://orcid.org/0000-0002-3145-9880",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+        ],
+        "@type": ["Person",
+        {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+         {"conflict": "None"}
+        ],
+        "affiliation": {
+          "@type": ["Organization",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+        "@legalName":[ "Helmholtz-Zentrum Dresden-Rossendorf (HZDR)",
+          {
+            "plugin": "codemeta",
+            "local_path": "codemeta.md",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "codemeta"
+          },
+          {"conflict": "None"}
+          ]      
+        },
+        "familyName":[ "Pape",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ],
+          "givenName": ["David",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+            ],
+        "email": ["d.pape@hzdr.de",
+          {
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
+            "timestamp": "2025-03-18T13:28:37.657148",
+            "harvester": "cff"
+          },
+          {"conflict": "None"}
+          ]
+        },
+        {
+          "@id": ["https://orcid.org/0009-0005-4430-6743",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+           {"conflict": "None"}
+            ],
+          "@type": ["Person",
+          {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+           {"conflict": "None"}
+          ],
+          "affiliation": {
+            "@type": ["Organization",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ],
+          "@legalName": ["German Aerospace Center (DLR)",
+            {
+              "plugin": "codemeta",
+              "local_path": "codemeta.md",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "codemeta"
+            },
+            {"conflict": "None"}
+            ]  
+          },
+          "familyName": ["Sophie",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "Policy 1"}
+           ],
+          "givenName": ["Kernchen",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "Policy 1"}
+            ],
+          "email":["sophie.kernchen@dlr.de",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ]
+        },
+        {
+        "@id": ["https://orcid.org/0009-0001-8382-4923",
+          {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+           {"conflict": "None"}
+          ],
+          "@type": ["Person",
+          {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+           {"conflict": "None"}
+          ],
+          "affiliation": {
+            "@type": ["Organization",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ],
+          "@legalName": ["Forschungszentrum J\u00c3\u00bclich",
+            {
+              "plugin": "codemeta",
+              "local_path": "codemeta.md",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "codemeta"
+            },
+            {"conflict": "None"}
+            ]  
+          },
+          "familyName": ["Heeb",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ],
+          "givenName": ["Nitai",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ],
+          "email": ["n.heeb@fz-juelich.de",
+            {
+              "plugin": "cff",
+              "local_path": "CITATION.cff",
+              "timestamp": "2025-03-18T13:28:37.657148",
+              "harvester": "cff"
+            },
+            {"conflict": "None"}
+            ]
+        }
+      
+      ],
+      "description": ["Cool tool",
+      {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"
+      },
+      {"conflict": "None"}
+      ],
+    "license": ["https://spdx.org/licenses/Apache-2.0",
+      {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"
+      },
+      {"conflict": "None"}
+      ],
+  "name": ["SoftwareCaRD Test",
+      {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"
+      },
+      {"conflict": "None"}
+      ],
+
+  "version": ["0.1.0",
+      {
+        "plugin": "cff",
+        "local_path": "CITATION.cff",
+        "timestamp": "2025-03-18T13:28:37.657148",
+        "harvester": "cff"
+      },
+      {"conflict": "None"}
+      ],
+
+  "policiy-report":{"policy 1": "Validated"}
+}
+  
