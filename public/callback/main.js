@@ -60,5 +60,4 @@ async function latest(projectId, token) {
     const pipelineId = jobData[0]["pipeline"]["id"];
     
     window.location = `../callback?gitlab_project_id=${projectId}&gitlab_pipeline_id=${pipelineId}&gitlab_job_id=${jobId}&latest=2`;
-    //gitlab_pipeline_id=618554&gitlab_job_id=2513432
 }
