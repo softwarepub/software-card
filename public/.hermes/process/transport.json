@@ -15,10 +15,10 @@
     ,
   "@type":[ "SoftwareSourceCode",
   	  {
-        "plugin": "cff",
-        "local_path": "CITATION.cff",
+        "plugin": "codemeta",
+        "local_path": "codemeta.md",
         "timestamp": "2025-03-18T13:28:37.657148",
-        "harvester": "cff"
+        "harvester": "codemeta"
       },
      {"conflict": "Policy 1"}
   ],
@@ -59,10 +59,10 @@
         ],
         "@legalName": ["German Aerospace Center (DLR)",
             {
-            "plugin": "codemeta",
-            "local_path": "codemeta.md",
+            "plugin": "cff",
+            "local_path": "CITATION.cff",
             "timestamp": "2025-03-18T13:28:37.657148",
-            "harvester": "codemeta"
+            "harvester": "cff"
           },
           {"conflict": "None"}
         ]

@@ -1,77 +1,75 @@
-function extract_info(element, obj, tag, category){
-      const div = document.createElement("div");
-      const divTag = document.createElement("div");
-      if(obj[category]){
-        if(typeof obj[category] === "string" || typeof obj[category] == "number"){
-          div.appendChild(document.createTextNode(` ${obj[category]}`));
-        }else if(Array.isArray(obj[category])){
-          if(Array.isArray(obj[category][0]) && Object.keys(obj[category][0]).includes("familyName")){
-            obj[category].forEach(e =>{
-              const element = document.createElement("div");
-              extract_person(e, element);
-              div.appendChild(element);
-
-            })
-          }
-          obj[category].forEach(e =>{
-            //const name = e.exec("familyName");
-            const element = document.createElement("div");
-            element.appendChild(document.createTextNode(` ${JSON.stringify(e).replaceAll("{","").replaceAll("}","").replaceAll('"',"")}`));
-            div.appendChild(element);
-      
-          })
-
-        }else{
-            const element = document.createElement("div");
-            element.appendChild(document.createTextNode(` ${JSON.stringify(obj[category])}`));
-            div.appendChild(element);
-        }
-      }else{
-        if(Array.isArray(obj) && Object.keys(obj[0]).includes("familyName")){
+function extract_info(cell, obj, tag, category){
+      if(!Array.isArray(obj)){
+        obj = [obj];
+      }
+      if(typeof obj[0] === "string" || typeof obj[0] == "number"){
+        cell.appendChild(document.createTextNode(` ${obj[0]}`));
+      }
+      else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
           obj.forEach(e =>{
             const element = document.createElement("div");
-            console.log(e, element);
-            extract_person(e, element);
-            div.appendChild(element);
+            extract_person(e, element, tag);
+            cell.appendChild(element);
 
-          })
-        }else{
+          })}
+      else if(Array.isArray(obj[0])){
+          obj[0].forEach(e =>{
           const element = document.createElement("div");
-          element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
-          div.appendChild(element);
-        }
-      }
+          extract_info(element, e, tag);
+          //element.appendChild(document.createTextNode(`hh ${e}`));
+          cell.appendChild(element);
 
-      if(Object.keys(obj).includes("meta")){
-
-        divTag.appendChild(document.createTextNode(`${obj.meta["local_path"]}`));
-      }else{
-        divTag.appendChild(document.createTextNode(`See Details`));
+        })
+          }
+      else{
+          const div = document.createElement("div");
+          for (let key in obj[0]) {
+            if(typeof obj[0][key]=== "string" || typeof obj[0][key] == "number"){
+            div.appendChild(document.createTextNode(`${key}: ${(obj[0][key])}`));
+            }else{
+              div.appendChild(document.createTextNode(`${key}: `));
+              extract_info(div, obj[0][key], tag, key); 
+            }
+            div.appendChild(document.createElement("br"));
+          }
+          cell.appendChild(div);
       }
-      element.appendChild(div);
-      tag.appendChild(divTag);
+      if(obj[1] && Object.keys(obj[1]).includes("local_path")){
+        const divTag = document.createElement("div");
+        divTag.classList.add("tag");
+        divTag.appendChild(document.createTextNode(`${obj[1]["local_path"]}`));
+        tag.appendChild(divTag);
+      }
     }
 
-  function extract_person(e, element){
+  function extract_person(e, element, tag){
     const tooltip = document.createElement("div");
+    const tooltiptag = document.createElement("div");
     tooltip.classList.add("tooltip");
-    //tooltip.onclick = function(){link_to_person(e)};
+    tooltip.onclick = function(){link_to_person(e)};
     const tooltiptext = document.createElement("div");
     tooltiptext.classList.add("tooltiptext");
-    const text = document.createTextNode(`${e.familyName.familyName}, ${e.givenName.givenName} `);
-    if(e.familyName.familyName === "Sophie"){
+    const text = document.createTextNode(`${e.familyName[0]}, ${e.givenName[0]} `);
+    tooltiptag.appendChild(document.createTextNode("See Details"));
+    tooltiptag.appendChild(document.createElement("br"));
+    tooltiptag.onclick = function(){link_to_person(e)};
+    tag.appendChild(tooltiptag);
+    if(e.familyName[0] === "Sophie"){
       tooltip.className += " error"
     }
     //const data = JSON.stringify(e, null, 2);
     
     const names = [];
     Object.keys(e).forEach(k => {
-      if (Object.keys(e[k]).includes(k)){
-        names.push(`${k}:  ${e[k][k]}`); 
+      if(!Array.isArray(e[k])){
+        for (let key in e[k]) {
+        names.push(`${k}:${key}:  ${e[k][key][0]}`); 
+        }
+      }else{
+      names.push(`${k}:  ${e[k][0]}`); 
       }
     })
-    console.log(names);
-    tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`)); //{.*\n*\t*.*\n*}
+    tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`));
     tooltip.appendChild(tooltiptext);
     tooltip.appendChild(text);
     element.appendChild(tooltip);
@@ -79,7 +77,7 @@ function extract_info(element, obj, tag, category){
 
   function link_to_person(data){
     document.body.innerHTML = '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
-        document.getElementById("test").innerHTML = 'Person <b>'+data.familyName+'</b>';
+        document.getElementById("test").innerHTML = 'Person <b>'+data.familyName[0]+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
         const tbl = document.createElement("table");
@@ -98,15 +96,12 @@ function extract_info(element, obj, tag, category){
             const cell = document.createElement("td");
             const cell2 = document.createElement("td");
             const cellText = document.createTextNode(` ${element}`);
-            const cellText2 = document.createElement('div');
 
             const cellTag = document.createElement("td");
             const cellTextTag = document.createElement('div');
 
-            extract_info(cellText2, data[element], cellTextTag, "author[0]."+element);
-            //cellText2.appendChild(document.createTextNode(` ${data.affiliation[element]}`));
+            extract_info(cell2, data[element], cellTextTag, element);
             cell.appendChild(cellText);
-            cell2.appendChild(cellText2);
             row.appendChild(cell);
             row.appendChild(cell2);
 
@@ -126,4 +121,16 @@ function extract_info(element, obj, tag, category){
         tags.appendChild(tblTags);
 
   }
+
+  function getHeight(element)
+{
+    element.style.visibility = "hidden";
+    document.body.appendChild(element);
+    var height = element.offsetHeight + 0;
+    document.body.removeChild(element);
+    element.style.visibility = "visible";
+    console.log(height);
+    return height;
+}
+
   export {extract_info};

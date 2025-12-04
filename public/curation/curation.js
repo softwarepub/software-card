@@ -5,7 +5,7 @@ export function displayJSON(json_document){
 fetch(json_document)//.hermes/process/hermes.json")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("test").innerHTML = 'Project <b>'+data.name.name+'</b>';
+        document.getElementById("test").innerHTML = 'Project <b>'+data.name[0]+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
         const tags = document.getElementById("tags");
@@ -26,20 +26,24 @@ fetch(json_document)//.hermes/process/hermes.json")
             const cell = document.createElement("td");
             const cell2 = document.createElement("td");
             const cellText = document.createTextNode(` ${element}`);
-            const cellText2 = document.createElement('div');
 
             const cellTag = document.createElement("td");
             const cellTextTag = document.createElement('div');
-            extract_info(cellText2, data[element], cellTextTag, element);
+            extract_info(cell2, data[element], cellTextTag, element);
 
             cell.appendChild(cellText);
-            cell2.appendChild(cellText2);
             row.appendChild(cell);
             row.appendChild(cell2);
 
             
             cellTag.appendChild(cellTextTag);
             rowTags.appendChild(cellTag);
+
+            let style = getComputedStyle(cell);
+
+            let hei = parseInt(style.offsetHeight) || 0;
+            console.log(hei);
+            cellTag.style.height = `${cell.offsetHeight}px`;
 
       
           // add the row to the end of the table body
