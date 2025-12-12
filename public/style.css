@@ -13,14 +13,10 @@ a{
   }
 
 table {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid;
+    border-collapse: collapse;
 }
 
-tbody {
-    border: 1px solid;
-}
 
 th, td, tr {
     border: 1px solid;

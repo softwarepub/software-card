@@ -20,13 +20,6 @@ fetch(json_document)//.hermes/process/hermes.json")
         tbl.appendChild(colgroup);
         //tbl.appendChild(colgroup);
         // creating all cells
-        const row = document.createElement("tr");
-        const cell = document.createElement("td");
-        cell.appendChild(document.createTextNode(` Curation View`));
-        cell.colSpan = "3";
-        row.appendChild(cell);
-        tblBody.appendChild(row);
-
         keys.forEach(element => {          
           // creates a table row
           const row = document.createElement("tr");
