@@ -122,15 +122,4 @@ function extract_info(cell, obj, tag, category){
 
   }
 
-  function getHeight(element)
-{
-    element.style.visibility = "hidden";
-    document.body.appendChild(element);
-    var height = element.offsetHeight + 0;
-    document.body.removeChild(element);
-    element.style.visibility = "visible";
-    console.log(height);
-    return height;
-}
-
   export {extract_info};
