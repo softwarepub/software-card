@@ -10,9 +10,8 @@
         "local_path": "CITATION.cff",
         "timestamp": "2025-03-18T13:28:37.657148",
         "harvester": "cff"},
-      {"conflict:":"None"}   
-  ]
-    ,
+      {"conflict":"None"}   
+  ],
   "@type":[ "SoftwareSourceCode",
   	  {
         "plugin": "codemeta",
@@ -473,9 +472,14 @@
         "plugin": "cff",
         "local_path": "CITATION.cff",
         "timestamp": "2025-03-18T13:28:37.657148",
-        "harvester": "cff"
-      },
-      {"conflict": "None"}
+        "harvester": "cff",
+        "alternative_source":{"plugin": "codemeta",
+                                "value": "0.1.1",
+                                  "local_path": "codemeta.md",
+                                  "timestamp": "2025-04-18T13:28:38.657148",
+                                "harvester": "codemeta"}
+          },
+         {"conflict": "Curation"}
       ],
 
   "policiy-report":{"policy 1": "Validated"}

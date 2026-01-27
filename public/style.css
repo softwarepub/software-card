@@ -15,6 +15,7 @@ a{
 table {
     border: 1px solid;
     border-collapse: collapse;
+    width:100%;
 }
 
 
@@ -37,17 +38,10 @@ button{
 
 #content{
     display: flex;
-    align-items: stretch;
     justify-content: center;
 }
-
-.elements{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: nowrap;
-
+#hermes{
+    width: 80%;
 }
 
 .tooltip {
@@ -63,11 +57,15 @@ color: #fff;
 text-align: center;
 position: absolute;
 z-index: 1;
+width: 80%;
 bottom: 125%;
-left:20%;
-translate: -12%;
+left: 10%;
 opacity: 0;
 transition: opacity 0.3s;
+border-radius: 12px;
+}
+.tooltip .tooltiptext p{
+font-size: large;
 
 }
 
@@ -90,4 +88,5 @@ opacity: 1;
 
 .error{
     color: red;
+    border-color:black;
 }

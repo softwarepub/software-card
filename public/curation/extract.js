@@ -3,7 +3,17 @@ function extract_info(cell, obj, tag, category){
         obj = [obj];
       }
       if(typeof obj[0] === "string" || typeof obj[0] == "number"){
+        console.log("einfahc", obj[0], obj[2]);
+        if(obj[2] && obj[2]["conflict"] == "Curation"){
+          console.log(`${Object.keys(obj[2])}`);
+          const element = document.createElement("div");
+          element.className += " error";
+          element.appendChild(document.createTextNode(` ${obj[0]}`));
+          cell.appendChild(element);
+        }else{
         cell.appendChild(document.createTextNode(` ${obj[0]}`));
+        }
+        
       }
       else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
           obj.forEach(e =>{
@@ -14,10 +24,12 @@ function extract_info(cell, obj, tag, category){
           })}
       else if(Array.isArray(obj[0])){
           obj[0].forEach(e =>{
+            console.log(e);
           const element = document.createElement("div");
           extract_info(element, e, tag);
           //element.appendChild(document.createTextNode(`hh ${e}`));
           cell.appendChild(element);
+          
 
         })
           }
@@ -40,6 +52,7 @@ function extract_info(cell, obj, tag, category){
         divTag.appendChild(document.createTextNode(`${obj[1]["local_path"]}`));
         tag.appendChild(divTag);
       }
+
     }
 
   function extract_person(e, element, tag){
@@ -54,22 +67,34 @@ function extract_info(cell, obj, tag, category){
     tooltiptag.appendChild(document.createElement("br"));
     tooltiptag.onclick = function(){link_to_person(e)};
     tag.appendChild(tooltiptag);
-    if(e.familyName[0] === "Sophie"){
-      tooltip.className += " error"
-    }
     //const data = JSON.stringify(e, null, 2);
     
     const names = [];
     Object.keys(e).forEach(k => {
+      const pair = document.createElement("p");
       if(!Array.isArray(e[k])){
         for (let key in e[k]) {
+        const pair_in_list = document.createElement("p");
         names.push(`${k}:${key}:  ${e[k][key][0]}`); 
+        pair_in_list.appendChild(document.createTextNode(`${k}:${key}:  ${e[k][key][0]}`));
+        if(e[k][key][2] && e[k][key][2]["conflict"] == "Curation"){
+          pair_in_list.className += " error";
+          tooltiptag.className += " error";
         }
+        pair.appendChild(pair_in_list);
+      }
       }else{
       names.push(`${k}:  ${e[k][0]}`); 
+      pair.appendChild(document.createTextNode(`${k}:  ${e[k][0]}`));
+      
+      if(e[k][2] && e[k][2]["conflict"] == "Curation"){
+        pair.className += " error";
+        tooltiptag.className += " error";
       }
+    }
+    tooltiptext.appendChild(pair);
     })
-    tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`));
+    //tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`));
     tooltip.appendChild(tooltiptext);
     tooltip.appendChild(text);
     element.appendChild(tooltip);
@@ -82,16 +107,12 @@ function extract_info(cell, obj, tag, category){
         const hermes = document.getElementById("hermes");
         const tbl = document.createElement("table");
         const tblBody = document.createElement("tbody");
-        
-        const tags = document.getElementById("tags");
-        const tblTags = document.createElement("table");
-        const tblBodyTags = document.createElement("tbody");
+
       
         // creating all cells
         keys.forEach(element => {
           // creates a table row
-          const row = document.createElement("tr");   
-          const rowTags = document.createElement("tr");
+          const row = document.createElement("tr"); 
       
             const cell = document.createElement("td");
             const cell2 = document.createElement("td");
@@ -106,19 +127,13 @@ function extract_info(cell, obj, tag, category){
             row.appendChild(cell2);
 
             cellTag.appendChild(cellTextTag);
-            rowTags.appendChild(cellTag);
+            row.appendChild(cellTag);
 
-
-      
           // add the row to the end of the table body
           tblBody.appendChild(row);
-          tblBodyTags.appendChild(rowTags);
         })
         tbl.appendChild(tblBody);
         hermes.appendChild(tbl);
-
-        tblTags.appendChild(tblBodyTags);
-        tags.appendChild(tblTags);
 
   }
 
