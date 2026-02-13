@@ -10,7 +10,10 @@ export function displayJSON(json_document){
         const id = params.get("id")
         data = get_data_snippet(data, "@id", id);
 
-        document.body.innerHTML += `<button onClick="window.location = window.location.href.split('?')[0];">Back to Overview</button>`;
+        const back = document.createElement("button");
+        back.innerText = "Back to Overview";
+        back.onclick = () => {window.location = window.location.href.split('?')[0];}
+        document.body.appendChild(back);
       }
       
 
@@ -34,10 +37,21 @@ export function displayJSON(json_document){
           tbody.appendChild(row);
       })
   })
+    const checkbox = document.querySelector("#extended");
+checkbox.addEventListener('change', (event)=>{
+  if(checkbox.checked){
+  document.getElementById("col2").style.visibility = "";
+}else{
+  document.getElementById("col2").style.visibility = "collapse";
+}
+
+})
+
+
 }
 function get_data_snippet(data, skey, svalue){
   const stack = [data];
-  search: while (stack?.length > 0) {
+  while (stack?.length > 0) {
     const obj = stack.pop();
     for(let i=0; i<Object.keys(obj).length; i++){
       let key = Object.keys(obj)[i];
@@ -51,13 +65,3 @@ function get_data_snippet(data, skey, svalue){
   }
   return data;
 }
-
-const checkbox = document.getElementById("extended");
-checkbox.addEventListener('change', (event)=>{
-  if(checkbox.checked){
-  document.getElementById("col2").style.visibility = "";
-}else{
-  document.getElementById("col2").style.visibility = "collapse";
-}
-
-})
