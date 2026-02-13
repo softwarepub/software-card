@@ -3,7 +3,6 @@ function extract_info(cell, obj, tag, category){
         obj = [obj];
       }
       if(typeof obj[0] === "string" || typeof obj[0] == "number"){
-        console.log("einfahc", obj[0], obj[2]);
         if(obj[2] && obj[2]["conflict"] == "Curation"){
           console.log(`${Object.keys(obj[2])}`);
           const element = document.createElement("div");
@@ -66,6 +65,7 @@ function extract_info(cell, obj, tag, category){
     tooltiptag.appendChild(document.createTextNode("See Details"));
     tooltiptag.appendChild(document.createElement("br"));
     tooltiptag.onclick = function(){link_to_person(e)};
+    console.log(e);
     tag.appendChild(tooltiptag);
     //const data = JSON.stringify(e, null, 2);
     
@@ -101,41 +101,7 @@ function extract_info(cell, obj, tag, category){
   }
 
   function link_to_person(data){
-    document.body.innerHTML =  '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
-
-        document.getElementById("test").innerHTML = 'Person <b>'+data.familyName[0]+'</b>';
-        const keys = Object.keys(data);
-        const hermes = document.getElementById("hermes");
-        const tbl = document.createElement("table");
-        const tblBody = document.createElement("tbody");
-
-      
-        // creating all cells
-        keys.forEach(element => {
-          // creates a table row
-          const row = document.createElement("tr"); 
-      
-            const cell = document.createElement("td");
-            const cell2 = document.createElement("td");
-            const cellText = document.createTextNode(` ${element}`);
-
-            const cellTag = document.createElement("td");
-            const cellTextTag = document.createElement('div');
-
-            extract_info(cell2, data[element], cellTextTag, element);
-            cell.appendChild(cellText);
-            row.appendChild(cell);
-            row.appendChild(cell2);
-
-            cellTag.appendChild(cellTextTag);
-            row.appendChild(cellTag);
-
-          // add the row to the end of the table body
-          tblBody.appendChild(row);
-        })
-        tbl.appendChild(tblBody);
-        hermes.appendChild(tbl);
-
+    window.location.href += `?id=${data["@id"][0]}`;
   }
 
   export {extract_info};

@@ -5,7 +5,17 @@ export function displayJSON(json_document){
   fetch(json_document)
   .then(response => response.json())
   .then(data => {
-      document.getElementById("test").innerHTML = 'Project <b>'+data.name[0]+'</b>';
+      const params = new URLSearchParams(location.search);
+      if(params.has("id")){
+        const id = params.get("id")
+        data = get_data_snippet(data, "@id", id);
+
+        document.body.innerHTML += `<button onClick="window.location = window.location.href.split('?')[0];">Back to Overview</button>`;
+      }
+      
+
+
+      //document.getElementById("test").innerHTML = 'Project <b>'+data.name[0]+'</b>';
       const keys = Object.keys(data);
       const metadateTemp = document.querySelector("#metadate");
       const tbody = document.querySelector("#metadata");
@@ -24,15 +34,30 @@ export function displayJSON(json_document){
           tbody.appendChild(row);
       })
   })
-
-
+}
+function get_data_snippet(data, skey, svalue){
+  const stack = [data];
+  search: while (stack?.length > 0) {
+    const obj = stack.pop();
+    for(let i=0; i<Object.keys(obj).length; i++){
+      let key = Object.keys(obj)[i];
+      if(key==skey && obj[key][0]==svalue){
+        return obj;
+      }
+      if (typeof obj[key] === 'object' && obj[key] !== null) {
+        stack.push(obj[key]);
+      }
+    }
+  }
+  return data;
+}
 
 const checkbox = document.getElementById("extended");
 checkbox.addEventListener('change', (event)=>{
-if(checkbox.checked){
+  if(checkbox.checked){
   document.getElementById("col2").style.visibility = "";
 }else{
   document.getElementById("col2").style.visibility = "collapse";
 }
+
 })
-}
