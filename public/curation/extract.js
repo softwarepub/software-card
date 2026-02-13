@@ -101,7 +101,8 @@ function extract_info(cell, obj, tag, category){
   }
 
   function link_to_person(data){
-    document.body.innerHTML = '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
+    document.body.innerHTML =  '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
+
         document.getElementById("test").innerHTML = 'Person <b>'+data.familyName[0]+'</b>';
         const keys = Object.keys(data);
         const hermes = document.getElementById("hermes");
