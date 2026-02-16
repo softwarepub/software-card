@@ -20,7 +20,7 @@
     </canvas>
     </div>
 
-    <p id="test"></p>
+    <p id="project-name"><b>Metadata</b></p>
     <input type="checkbox" id="extended" name="extended" value=1 checked>
     <label for="extended">Extended view</label><br>
     
@@ -46,10 +46,22 @@
                 </table>
     
         </div>
-        <template id="policy-report">
-            <h3>Policy Report</h3>
-            
+        <div id="sw-policies">
+        <h3 id="header-policies">Policy Report</h3>
+        <template id="policy">
+            <b id="policy-name"></b>
+            <table>
+                <tbody>
+                    <template id="policy-report">
+                        <tr id="tr">
+                            <td id="pkey"></td>
+                            <td id="pvalue"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
         </template>
+        </div>
     </div>
 
 

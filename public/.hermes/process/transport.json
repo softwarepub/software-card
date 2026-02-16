@@ -482,6 +482,20 @@
          {"conflict": "Curation"}
       ],
 
-  "policy-report":{"policy 1": "Validated"}
+  "policies": [{"policy 1": {"conforms": true}},
+  {"policy 2": {"conforms": false,
+      "resultMessage": "String length not >= Literal(\"100\", datatype=xsd:integer)" ,
+      "resultPath": "https://schema.org/description" ,
+      "resultSeverity": "Violation" ,
+      "sourceConstraintComponent": "MinLengthConstraintComponent" ,
+      "sourceShape": { "datatype": "string" ,
+              "description": "The software description must have a certain length.",
+              "minLength": 100 ,
+              "name": "Long description" ,
+              "path": "https://schema.org/description" },
+      "value": "Proof-of-concept implementation of the HERMES workflow."
+  }}
+
+]
 }
   

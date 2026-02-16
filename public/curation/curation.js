@@ -16,15 +16,59 @@ export function displayJSON(json_document){
         document.body.appendChild(back);
       }
       
-
-
-      //document.getElementById("test").innerHTML = 'Project <b>'+data.name[0]+'</b>';
       const keys = Object.keys(data);
+
       const metadateTemp = document.querySelector("#metadate");
       const tbody = document.querySelector("#metadata");
+      const policyTemp = document.querySelector("#policy"),
+          policyDiv =  document.querySelector("#sw-policies");
+      
 
-      keys.forEach(element => {          
+      const header = document.querySelector("#header-policies");
+      header.style.display = "none";
+
+      keys.forEach(element => { 
+        if(element.toLowerCase().includes("name")){
+          console.log(element);
+          document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element][0]+'</b>';
+        }
+        if(element=="policies"){
+          header.style.display = "block";
+          console.log("policies");
+          data[element].forEach(pol =>{
+            console.log(pol);
+            const policy = document.importNode(policyTemp.content, true);
+            console.log(policy);
+            const tbodyPol = policy.querySelector("tbody"),
+              polname = policy.querySelector("#policy-name");
+            const policyId = Object.keys(pol)[0];
+            polname.textContent = `${policyId}`;
+            policyDiv.appendChild(policy);
+            const policyReportTemp = document.querySelector("#policy-report");
+            const polKeys = Object.keys(pol[policyId]);
+            console.log(polKeys);
+            polKeys.forEach(report =>{
+              console.log(report);
+              const prow = document.importNode(policyReportTemp.content, true);
+              
+              const pkey = prow.querySelector("#pkey"),
+                pvalue = prow.querySelector("#pvalue");
+                //pconforms = prow.querySelector("#policy-conforms"); 
+                if(report=="conforms"){
+                  console.log("conforms");
+                }
+                console.log(report,pol[policyId][report]);
+                pkey.textContent = `${report}`;
+                extract_info(pvalue, pol[policyId][report]);
+                //pvalue.textContent = `${pol[policyId][report]}`;
+                tbodyPol.appendChild(prow);
+            })
+          })
+
+          return;
+        }   
         const row = document.importNode(metadateTemp.content, true);
+        console.log(row);
         const mkey = row.querySelector("#key"),
           mvalue = row.querySelector("#value"),
           mtag = row.querySelector("#tag");

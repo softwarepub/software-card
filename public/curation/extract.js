@@ -2,7 +2,7 @@ function extract_info(cell, obj, tag, category){
       if(!Array.isArray(obj)){
         obj = [obj];
       }
-      if(typeof obj[0] === "string" || typeof obj[0] == "number"){
+      if(typeof obj[0] === "string" || typeof obj[0] == "number" || typeof obj[0] == "boolean"){
         if(obj[2] && obj[2]["conflict"] == "Curation"){
           console.log(`${Object.keys(obj[2])}`);
           const element = document.createElement("div");

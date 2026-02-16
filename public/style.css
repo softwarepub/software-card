@@ -35,13 +35,21 @@ button{
     justify-content: center;
     padding: 1%;
 }
+#header-policies{
+    display: none;
+    ;
+}
 
 #content{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 #hermes{
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
 
 .tooltip {
