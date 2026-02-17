@@ -1,11 +1,11 @@
-function extract_info(cell, obj, tag, category){
+function extract_info(cell, obj, tag, colorPolicies){
       if(!Array.isArray(obj)){
         obj = [obj];
       }
       if(typeof obj[0] === "string" || typeof obj[0] == "number" || typeof obj[0] == "boolean"){
-        if(obj[2] && obj[2]["conflict"] == "Curation"){
+        if(obj[2] && obj[2]["conflict"]){
           const element = document.createElement("div");
-          element.className += " error";
+          element.style.color = colorPolicies[obj[2]["conflict"]];
           element.appendChild(document.createTextNode(` ${obj[0]}`));
           cell.appendChild(element);
         }else{
@@ -16,7 +16,7 @@ function extract_info(cell, obj, tag, category){
       else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
           obj.forEach(e =>{
             const element = document.createElement("div");
-            extract_person(e, element, tag);
+            extract_person(e, element, tag, colorPolicies);
             cell.appendChild(element);
 
           })}
@@ -37,7 +37,7 @@ function extract_info(cell, obj, tag, category){
             div.appendChild(document.createTextNode(`${key}: ${(obj[0][key])}`));
             }else{
               div.appendChild(document.createTextNode(`${key}: `));
-              extract_info(div, obj[0][key], tag, key); 
+              extract_info(div, obj[0][key], tag, colorPolicies); 
             }
             div.appendChild(document.createElement("br"));
           }
@@ -52,7 +52,7 @@ function extract_info(cell, obj, tag, category){
 
     }
 
-  function extract_person(e, element, tag){
+  function extract_person(e, element, tag, colorPolicies){
     const tooltip = document.createElement("div");
     const tooltiptag = document.createElement("div");
     tooltip.classList.add("tooltip");
@@ -74,9 +74,11 @@ function extract_info(cell, obj, tag, category){
         const pair_in_list = document.createElement("p");
         names.push(`${k}:${key}:  ${e[k][key][0]}`); 
         pair_in_list.appendChild(document.createTextNode(`${k}:${key}:  ${e[k][key][0]}`));
-        if(e[k][key][2] && e[k][key][2]["conflict"] == "Curation"){
-          pair_in_list.className += " error";
-          tooltiptag.className += " error";
+        if(e[k][key][2] && e[k][key][2]["conflict"]){
+          pair_in_list.style.color = colorPolicies[e[k][key][2]["conflict"]];
+          tooltiptag.style.color = colorPolicies[e[k][key][2]["conflict"]];
+          /*pair_in_list.className += " error";
+          tooltiptag.className += " error";*/
         }
         pair.appendChild(pair_in_list);
       }
@@ -84,9 +86,11 @@ function extract_info(cell, obj, tag, category){
       names.push(`${k}:  ${e[k][0]}`); 
       pair.appendChild(document.createTextNode(`${k}:  ${e[k][0]}`));
       
-      if(e[k][2] && e[k][2]["conflict"] == "Curation"){
-        pair.className += " error";
-        tooltiptag.className += " error";
+      if(e[k][2] && e[k][2]["conflict"]){
+        pair.style.color = colorPolicies[e[k][2]["conflict"]];
+        tooltiptag.style.color = colorPolicies[e[k][2]["conflict"]];
+        //pair.className += " error";
+        //tooltiptag.className += " error";
       }
     }
     tooltiptext.appendChild(pair);

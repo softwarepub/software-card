@@ -8,6 +8,13 @@ export function displayJSON(json_document){
   fetch(json_document)
   .then(response => response.json())
   .then(data => {
+      const colorPalette = ["rgb(34, 198, 227)", "purple", "rgb(23, 124, 207)", "rgb(116, 75, 196)", "pink"];
+      let colorPolicies = {"Curation": "red"};
+      if(data["policies"]){
+      for(let i=0; i<data["policies"].length;i++){
+        colorPolicies[Object.keys(data["policies"][i])] = colorPalette[i];
+      }}
+      console.log(colorPolicies);
       //Get data snippet from url
       const params = new URLSearchParams(location.search);
       if(params.has("id")){
@@ -29,6 +36,7 @@ export function displayJSON(json_document){
       const policyTemp = document.querySelector("#policy"),
           policyDiv =  document.querySelector("#sw-policies");
       
+      
 
       const header = document.querySelector("#header-policies");
       header.style.display = "none";
@@ -46,10 +54,17 @@ export function displayJSON(json_document){
             const policy = document.importNode(policyTemp.content, true);
             const tbodyPol = policy.querySelector("tbody"),
               polname = policy.querySelector("#policy-name"),
+              polcolor = policy.querySelector("#color"),
               pconforms = policy.querySelector("#policy-conforms"); 
             const policyId = Object.keys(pol)[0];
-            polname.textContent = `${policyId}`;
+            console.log(policyId);
+            polname.textContent = `${pol[policyId]["name"]}`;
+            //const randColor = '#'+(0x1000000+Math.random()*0xffffff).toString(16).slice(1,7);
+            polcolor.id += '_'+policyId;
+            polcolor.style.background = colorPolicies[policyId];
+            console.log(colorPolicies);
             policyDiv.appendChild(policy);
+
             const policyReportTemp = document.querySelector("#policy-report");
             const polKeys = Object.keys(pol[policyId]);
             polKeys.forEach(report =>{
@@ -59,8 +74,8 @@ export function displayJSON(json_document){
                 pvalue = prow.querySelector("#pvalue");
                 
                 if(report=="conforms"){
-                  pconforms.innerText = `${policyId} ${(pol[policyId][report]) ? 'is' : 'is not'} conform.`;
-                  pconforms.style.color = (pol[policyId][report]) ? 'black' : 'red';
+                  pconforms.innerText = `${pol[policyId]["name"]} ${(pol[policyId][report]) ? 'is' : 'is not'} conform.`;
+                  pconforms.style.color = (pol[policyId][report]) ? 'green' : 'red';
                 }
                 pkey.textContent = `${report}`;
                 extract_info(pvalue, pol[policyId][report]);
@@ -79,7 +94,7 @@ export function displayJSON(json_document){
           mtag = row.querySelector("#tag");
 
           mkey.textContent = `${element}`;
-          extract_info(mvalue, data[element], mtag);
+          extract_info(mvalue, data[element], mtag, colorPolicies);
 
           tbody.appendChild(row);
       })

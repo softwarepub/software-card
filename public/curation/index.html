@@ -21,8 +21,24 @@
     </div>
 
     <p id="project-name"><b>Metadata</b></p>
+    <div class="operators">
+
+
+
+    <div class="dropdown">
+        <button onclick="showFilter()" class="dropbtn">Filter</button>
+        <div id="filterDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a>&#10004; Conflicts</a>
+            <a>&#10004; Policy 1</a>
+            <a>&#10004; Policy 2</a>
+            <a>&#10004; Policy 3</a>
+        </div>
+    </div>
+
     <input type="checkbox" id="extended" name="extended" value=1 checked>
     <label for="extended">Extended view</label><br>
+    </div>
     
     <div id="content">
         <div id="hermes">
@@ -49,7 +65,10 @@
         <div id="sw-policies">
         <h3 id="header-policies">Policy Report</h3>
         <template id="policy">
+            <div class="policy-header">
+            <div class="policy-color" id="color"></div>
             <b id="policy-name"></b>
+            </div>
             <p id="policy-conforms"></p>
             <table>
                 <tbody>
@@ -67,6 +86,7 @@
 
 
     <script type="module" src="./script.js"></script>
+    <script src="./click.js"></script>
 
 </body>
 </html>

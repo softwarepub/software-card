@@ -19,7 +19,7 @@
         "timestamp": "2025-03-18T13:28:37.657148",
         "harvester": "codemeta"
       },
-     {"conflict": "Policy 1"}
+     {"conflict": "None"}
   ],
     "author": [
       {
@@ -349,7 +349,7 @@
               "timestamp": "2025-03-18T13:28:37.657148",
               "harvester": "cff"
             },
-            {"conflict": "Policy 1"}
+            {"conflict": "policy3"}
            ],
           "givenName": ["Kernchen",
             {
@@ -358,7 +358,7 @@
               "timestamp": "2025-03-18T13:28:37.657148",
               "harvester": "cff"
             },
-            {"conflict": "Policy 1"}
+            {"conflict": "policy3"}
             ],
           "email":["sophie.kernchen@dlr.de",
             {
@@ -439,14 +439,14 @@
         }
       
       ],
-      "description": ["Cool tool",
+      "description": ["Proof-of-concept implementation of the Software CaRD workflow.",
       {
         "plugin": "cff",
         "local_path": "CITATION.cff",
         "timestamp": "2025-03-18T13:28:37.657148",
         "harvester": "cff"
       },
-      {"conflict": "None"}
+      {"conflict": "policy2"}
       ],
     "license": ["https://spdx.org/licenses/Apache-2.0",
       {
@@ -482,8 +482,12 @@
          {"conflict": "Curation"}
       ],
 
-  "policies": [{"Policy 1": {"conforms": true}},
-  {"Policy 2": {"conforms": false,
+  "policies": [{"policy1": {
+    "name": "Policy 1",  
+    "conforms": true}},
+  {"policy2": {
+      "name": "Policy 2",  
+      "conforms": false,
       "resultMessage": "String length not >= Literal(\"100\", datatype=xsd:integer)" ,
       "resultPath": "https://schema.org/description" ,
       "resultSeverity": "Violation" ,
@@ -493,8 +497,22 @@
               "minLength": 100 ,
               "name": "Long description" ,
               "path": "https://schema.org/description" },
-      "value": "Proof-of-concept implementation of the HERMES workflow."
+      "value": "Proof-of-concept implementation of the Software CaRD workflow."
+  }},
+  {"policy3": {
+      "name": "Policy 3",  
+      "conforms": false,
+      "resultMessage": "Name does not match the mapping" ,
+      "resultPath": [["https://schema.org/familyName", "https://schema.org/givenName"]] ,
+      "resultSeverity": "Violation" ,
+      "sourceConstraintComponent": "MappingError" ,
+      "sourceShape": { "datatype": "string" ,
+              "description": "The names have to be in right order",
+              "name": "Name order" ,
+              "path": [["https://schema.org/familyName", "https://schema.org/givenName"]]  },
+      "value": [["Sophie", "Kernchen"]]
   }}
+
 
 ]
 }
