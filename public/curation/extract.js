@@ -4,7 +4,6 @@ function extract_info(cell, obj, tag, category){
       }
       if(typeof obj[0] === "string" || typeof obj[0] == "number" || typeof obj[0] == "boolean"){
         if(obj[2] && obj[2]["conflict"] == "Curation"){
-          console.log(`${Object.keys(obj[2])}`);
           const element = document.createElement("div");
           element.className += " error";
           element.appendChild(document.createTextNode(` ${obj[0]}`));
@@ -23,7 +22,6 @@ function extract_info(cell, obj, tag, category){
           })}
       else if(Array.isArray(obj[0])){
           obj[0].forEach(e =>{
-            console.log(e);
           const element = document.createElement("div");
           extract_info(element, e, tag);
           //element.appendChild(document.createTextNode(`hh ${e}`));
@@ -65,10 +63,9 @@ function extract_info(cell, obj, tag, category){
     tooltiptag.appendChild(document.createTextNode("See Details"));
     tooltiptag.appendChild(document.createElement("br"));
     tooltiptag.onclick = function(){link_to_person(e)};
-    console.log(e);
     tag.appendChild(tooltiptag);
     //const data = JSON.stringify(e, null, 2);
-    
+
     const names = [];
     Object.keys(e).forEach(k => {
       const pair = document.createElement("p");

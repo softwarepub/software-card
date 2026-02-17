@@ -482,8 +482,8 @@
          {"conflict": "Curation"}
       ],
 
-  "policies": [{"policy 1": {"conforms": true}},
-  {"policy 2": {"conforms": false,
+  "policies": [{"Policy 1": {"conforms": true}},
+  {"Policy 2": {"conforms": false,
       "resultMessage": "String length not >= Literal(\"100\", datatype=xsd:integer)" ,
       "resultPath": "https://schema.org/description" ,
       "resultSeverity": "Violation" ,
