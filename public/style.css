@@ -52,20 +52,20 @@ button{
     justify-content: center;
 }
 
-.conflict-operators{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+.operators{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.tooltip {
+.swc-tooltip {
     position: relative;
     border-bottom: 1px dotted black;
     white-space:pre-wrap;
   }
   
-.tooltip .tooltiptext {
+.swc-tooltip .swc-tooltiptext {
 visibility: hidden;
 background-color: #555;
 color: #fff;
@@ -80,12 +80,12 @@ opacity: 0;
 transition: opacity 0.3s;
 border-radius: 12px;
 }
-.tooltip .tooltiptext p{
+.swc-tooltip .swc-tooltiptext p{
 font-size: large;
 margin: 0px;
 }
 
-.tooltip .tooltiptext::after {
+.swc-tooltip .swc-tooltiptext::after {
 content: "";
 position: absolute;
 top: 100%;
@@ -97,7 +97,7 @@ border-style: solid;
 border-color: #555 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.swc-tooltip:hover .swc-tooltiptext {
 visibility: visible;
 opacity: 1;
 }
@@ -137,7 +137,8 @@ button{
   text-align: center;
   background-image: none;
   background-color: #ddd;
-  color:black
+  color:black;
+  padding: 0px;
 
 }
 
@@ -164,8 +165,8 @@ button{
 .dropdown {
   position: relative;
   display: inline-block;
-  left: 41%;
-  top: -15px;
+  left: 36%;
+  top: 10px;
 }
 
 /* Dropdown Content (Hidden by Default) */

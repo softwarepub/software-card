@@ -8,6 +8,8 @@ function extract_info(cell, obj, tag, colorPolicies){
           element.style.color = colorPolicies[obj[2]["conflict"]];
           element.appendChild(document.createTextNode(` ${obj[0]}`));
           cell.appendChild(element);
+          console.log("parent: "+cell.parentNode)
+          //cell.parentNode.style.background = colorPolicies[obj[2]["conflict"]];
         }else{
         cell.appendChild(document.createTextNode(` ${obj[0]}`));
         }
@@ -16,8 +18,11 @@ function extract_info(cell, obj, tag, colorPolicies){
       else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
           obj.forEach(e =>{
             const element = document.createElement("div");
-            extract_person(e, element, tag, colorPolicies);
+            const hasConfict = extract_person(e, element, tag, colorPolicies);
             cell.appendChild(element);
+            /*if (hasConfict){
+              cell.classList.add("table-warning");
+            }*/
 
           })}
       else if(Array.isArray(obj[0])){
@@ -53,12 +58,13 @@ function extract_info(cell, obj, tag, colorPolicies){
     }
 
   function extract_person(e, element, tag, colorPolicies){
+    let hasConfict = false;
     const tooltip = document.createElement("div");
     const tooltiptag = document.createElement("div");
-    tooltip.classList.add("tooltip");
+    tooltip.classList.add("swc-tooltip");
     tooltip.onclick = function(){link_to_person(e)};
     const tooltiptext = document.createElement("div");
-    tooltiptext.classList.add("tooltiptext");
+    tooltiptext.classList.add("swc-tooltiptext");
     const text = document.createTextNode(`${e.familyName[0]}, ${e.givenName[0]} `);
     tooltiptag.appendChild(document.createTextNode("See Details"));
     tooltiptag.appendChild(document.createElement("br"));
@@ -77,8 +83,8 @@ function extract_info(cell, obj, tag, colorPolicies){
         if(e[k][key][2] && e[k][key][2]["conflict"]){
           pair_in_list.style.color = colorPolicies[e[k][key][2]["conflict"]];
           tooltiptag.style.color = colorPolicies[e[k][key][2]["conflict"]];
-          /*pair_in_list.className += " error";
-          tooltiptag.className += " error";*/
+          hasConfict = true;
+          
         }
         pair.appendChild(pair_in_list);
       }
@@ -89,8 +95,7 @@ function extract_info(cell, obj, tag, colorPolicies){
       if(e[k][2] && e[k][2]["conflict"]){
         pair.style.color = colorPolicies[e[k][2]["conflict"]];
         tooltiptag.style.color = colorPolicies[e[k][2]["conflict"]];
-        //pair.className += " error";
-        //tooltiptag.className += " error";
+        hasConfict = true;
       }
     }
     tooltiptext.appendChild(pair);
@@ -99,6 +104,7 @@ function extract_info(cell, obj, tag, colorPolicies){
     tooltip.appendChild(tooltiptext);
     tooltip.appendChild(text);
     element.appendChild(tooltip);
+    return hasConfict;
   }
 
   function link_to_person(data){
