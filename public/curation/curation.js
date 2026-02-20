@@ -34,7 +34,10 @@ export function displayJSON(json_document){
       const metadateTemp = document.querySelector("#metadate");
       const tbody = document.querySelector("#metadata");
       const policyTemp = document.querySelector("#policy"),
-          policyDiv =  document.querySelector("#sw-policies");
+          policyDiv =  document.querySelector("#sw-policies"),
+          filterTemp = document.querySelector("#filter"),
+          filterDropdown = document.querySelector("#filterDropdown");
+          
       
       
 
@@ -60,6 +63,12 @@ export function displayJSON(json_document){
             console.log(policyId);
             polname.textContent = `${pol[policyId]["name"]}`;
             //const randColor = '#'+(0x1000000+Math.random()*0xffffff).toString(16).slice(1,7);
+            const filter = document.importNode(filterTemp.content, true);
+            const filterName = filter.querySelector("#filter-name"),
+                filterId = filter.querySelector("#filter-id");
+            filterName.textContent = `\u{2714} ${pol[policyId]["name"]}`; //&#10004; 
+            filterId.style.background = colorPolicies[policyId];
+            filterDropdown.appendChild(filter);
             polcolor.id += '_'+policyId;
             polcolor.style.background = colorPolicies[policyId];
             console.log(colorPolicies);

@@ -29,10 +29,11 @@
         <button onclick="showFilter()" class="dropbtn">Filter</button>
         <div id="filterDropdown" class="dropdown-content">
             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-            <a>&#10004; Conflicts</a>
-            <a>&#10004; Policy 1</a>
-            <a>&#10004; Policy 2</a>
-            <a>&#10004; Policy 3</a>
+            <a>&#10004; Select all</a>
+            <div class="policy-header"><div class="policy-color" style="background-color: red;"></div><a>&#10004; Conflicts</a></div>
+            <template id="filter">
+            <div class="policy-header"><div class="policy-color" id="filter-id"></div><a id="filter-name">&#10004; Policy 1</a></div>
+            </template>
         </div>
     </div>
 
