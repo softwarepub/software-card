@@ -59,6 +59,32 @@ button{
   justify-content: center;
 }
 
+.navigation{
+  position: absolute;
+  font-size: larger;
+  top:5%;
+  right:3%;
+  display: flex;
+  flex-direction: row;
+}
+
+.notes{
+  right: 5%;
+  cursor: pointer;
+}
+.notes:hover .notes-desc{
+  visibility: visible;
+}
+.notes-desc{
+  font-size: medium;
+  position: absolute;
+  width: 300px;
+  padding: 0px;
+  right: 1px;
+  text-align: end;
+  visibility: hidden;
+}
+
 .swc-tooltip {
     position: relative;
     border-bottom: 1px dotted black;
@@ -193,3 +219,37 @@ button{
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+tr:hover .single-line-comment{
+  visibility: visible;
+}
+.single-line-comment{
+  position:absolute;
+  right: 20%;
+  visibility: hidden;
+}
+.single-line-comment:hover .hover-text{
+  visibility: visible;
+}
+
+.hover-text{
+  visibility: hidden;
+  position: relative;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 2px;
+  border-radius: 6px;
+  z-index: 1;
+}
+.hover-text::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent #555 transparent;
+}

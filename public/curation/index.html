@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../style.css">
     <title>Software CaRD</title>
     <link rel="icon" href="../pictures/Logo.png" type="image/icon type">
-    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -18,6 +18,24 @@
     </h1>
     <canvas onclick="location.href = '../reporting/';" id="radar" width="80" height="80">
     </canvas>
+    </div>
+    <div class="navigation">
+        <div>
+            <a class="notes">&#x270D;   <!-- Or &#x1F4AC; -->
+            <p class="notes-desc">Start to gather curation notes</p>
+            </a>
+        </div>
+        <div>
+            <a class="notes">&#x1F4C3;   <!-- Or &#x1F3AB; -->
+            <p class="notes-desc">Send Issue Report to GitLab/GitHub</p>
+            </a>
+        </div>
+        <div id="user-login">
+            <a class="notes" href="../gitlab-setup/"> &#x1F464; <!-- Or &#x1F4AC; -->
+                <p class="notes-desc">Authentificate to GitLab/GitHub</p>
+            <a>
+        </div>
+
     </div>
 
     <p id="project-name"><b>Metadata</b></p>
@@ -55,6 +73,9 @@
                         <tr>
                             <td id="key"></td>
                             <td id="value">
+                                <div class="single-line-comment">+
+                                    <p class="hover-text">Comment on this row</p>
+                                </div>
                             </td>
                             <td id="tag"></td>
                         </tr>
