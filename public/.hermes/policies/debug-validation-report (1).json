@@ -1,0 +1,14 @@
+[
+  {
+    "@id": "_:N7dadb5f5fbbe4cbca887cdc620c43ab6",
+    "@type": [
+      "http://www.w3.org/ns/shacl#ValidationReport"
+    ],
+    "http://www.w3.org/ns/shacl#conforms": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": true
+      }
+    ]
+  }
+]

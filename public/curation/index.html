@@ -20,21 +20,74 @@
     </canvas>
     </div>
 
-    <p id="test"></p>
+    <p id="project-name"><b>Metadata</b></p>
+    <div class="operators">
+
+
+
+    <div class="dropdown">
+        <button onclick="showFilter()" class="dropbtn">Filter</button>
+        <div id="filterDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a>&#10004; Select all</a>
+            <div class="policy-header"><div class="policy-color" style="background-color: red;"></div><a>&#10004; Conflicts</a></div>
+            <template id="filter">
+            <div class="policy-header"><div class="policy-color" id="filter-id"></div><a id="filter-name">&#10004; Policy 1</a></div>
+            </template>
+        </div>
+    </div>
+
     <input type="checkbox" id="extended" name="extended" value=1 checked>
     <label for="extended">Extended view</label><br>
+    </div>
     
     <div id="content">
-    <div id="hermes">
+        <div id="hermes">
+                <table>
+                    <colgroup>
+                        <col id="col0">
+                        <col id="col1">
+                        <col id="col2">
+                    </colgroup>
+                    <tbody id="metadata">
+                        <template id="metadate">
+                        <tr>
+                            <td id="key"></td>
+                            <td id="value">
+                            </td>
+                            <td id="tag"></td>
+                        </tr>
+                    </template>
+    
+                    </tbody>
+                </table>
+    
+        </div>
+        <div id="sw-policies">
+        <h3 id="header-policies">Policy Report</h3>
+        <template id="policy">
+            <div class="policy-header">
+            <div class="policy-color" id="color"></div>
+            <b id="policy-name"></b>
+            </div>
+            <p id="policy-conforms"></p>
+            <table>
+                <tbody>
+                    <template id="policy-report">
+                        <tr id="tr">
+                            <td id="pkey"></td>
+                            <td id="pvalue"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        </div>
     </div>
-    <div id="tags">
 
-    </div></div>
-    <br>
-
-    <div id="s"></div>
 
     <script type="module" src="./script.js"></script>
+    <script src="./click.js"></script>
 
 </body>
 </html>
