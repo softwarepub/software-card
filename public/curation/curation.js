@@ -33,14 +33,10 @@ export function displayJSON(json_document){
 
       const metadateTemp = document.querySelector("#metadate");
       const tbody = document.querySelector("#metadata");
-      const policyTemp = document.querySelector("#policy"),
-          policyDiv =  document.querySelector("#sw-policies"),
-          filterTemp = document.querySelector("#filter"),
-          filterDropdown = document.querySelector("#filterDropdown");
-          
-      
-      
-
+      const policyTemp = document.querySelector("#policy");
+      const policyDiv = document.querySelector("#sw-policies");
+      const filterTemp = document.querySelector("#filter");
+      const filterDropdown = document.querySelector("#filterDropdown");
       const header = document.querySelector("#header-policies");
       header.style.display = "none";
 
@@ -60,7 +56,7 @@ export function displayJSON(json_document){
               polcolor = policy.querySelector("#color"),
               pconforms = policy.querySelector("#policy-conforms"); 
             const policyId = Object.keys(pol)[0];
-            console.log(policyId);
+            // console.log(policyId);
             polname.textContent = `${pol[policyId]["name"]}`;
             //const randColor = '#'+(0x1000000+Math.random()*0xffffff).toString(16).slice(1,7);
             const filter = document.importNode(filterTemp.content, true);
@@ -71,7 +67,7 @@ export function displayJSON(json_document){
             filterDropdown.appendChild(filter);
             polcolor.id += '_'+policyId;
             polcolor.style.background = colorPolicies[policyId];
-            console.log(colorPolicies);
+            // console.log(colorPolicies);
             policyDiv.appendChild(policy);
 
             const policyReportTemp = document.querySelector("#policy-report");
@@ -109,15 +105,14 @@ export function displayJSON(json_document){
       })
   })
   //Extend Checkbox for metadata source
-    const checkbox = document.querySelector("#extended");
-checkbox.addEventListener('change', (event)=>{
-  if(checkbox.checked){
-  document.getElementById("col2").style.visibility = "";
-}else{
-  document.getElementById("col2").style.visibility = "collapse";
-}
-
-})
+  const checkbox = document.querySelector("#extended");
+  checkbox.addEventListener('change', (event)=>{
+    if(checkbox.checked){
+      document.getElementById("col2").style.visibility = "";
+    }else{
+      document.getElementById("col2").style.visibility = "collapse";
+    }
+  })
 
 
 }
