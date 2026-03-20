@@ -1,0 +1,235 @@
+[
+  {
+    "@id": "_:N8068169b02c343babe9bb8722635033a",
+    "@type": [
+      "http://www.w3.org/ns/shacl#ValidationReport"
+    ],
+    "http://www.w3.org/ns/shacl#conforms": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": false
+      }
+    ],
+    "http://www.w3.org/ns/shacl#result": [
+      {
+        "@id": "_:Na299b0ba08894a7f95ccd9234e8a247e"
+      }
+    ]
+  },
+  {
+    "@id": "_:Na299b0ba08894a7f95ccd9234e8a247e",
+    "@type": [
+      "http://www.w3.org/ns/shacl#ValidationResult"
+    ],
+    "http://www.w3.org/ns/shacl#focusNode": [
+      {
+        "@id": "_:ne00ff720add644d5b48309d25eb5efd3b10"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#resultMessage": [
+      {
+        "@value": "String length not >= Literal(\"100\", datatype=xsd:integer)"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#resultPath": [
+      {
+        "@id": "https://schema.org/description"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#resultSeverity": [
+      {
+        "@id": "http://www.w3.org/ns/shacl#Violation"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#sourceConstraintComponent": [
+      {
+        "@id": "http://www.w3.org/ns/shacl#MinLengthConstraintComponent"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#sourceShape": [
+      {
+        "@id": "_:n2f40e429a2ba4abe8f8925c2ca966033b1"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#value": [
+      {
+        "@value": "Proof-of-concept implementation of the HERMES workflow."
+      }
+    ]
+  },
+  {
+    "@id": "_:n2f40e429a2ba4abe8f8925c2ca966033b1",
+    "http://www.w3.org/ns/shacl#datatype": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#description": [
+      {
+        "@value": "The software description must have a certain length."
+      }
+    ],
+    "http://www.w3.org/ns/shacl#minLength": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": 100
+      }
+    ],
+    "http://www.w3.org/ns/shacl#name": [
+      {
+        "@value": "Long description"
+      }
+    ],
+    "http://www.w3.org/ns/shacl#path": [
+      {
+        "@id": "https://schema.org/description"
+      }
+    ]
+  },
+  {
+    "@id": "_:ne00ff720add644d5b48309d25eb5efd3b10",
+    "@type": [
+      "https://schema.org/SoftwareSourceCode",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://doi.org/10.5063/schema/codemeta-2.0#readme": [
+      {
+        "@type": "https://schema.org/URL",
+        "@value": "https://raw.githubusercontent.com/softwarepub/hermes/proof-of-concept/README.md"
+      }
+    ],
+    "https://schema.org/author": [
+      {
+        "@id": "https://orcid.org/0000-0001-6372-3853"
+      },
+      {
+        "@id": "https://orcid.org/0000-0003-1761-2591"
+      },
+      {
+        "@id": "https://orcid.org/0000-0003-4925-7248"
+      },
+      {
+        "@id": "_:N538b305b81934ae391b8cef6677ba07e"
+      },
+      {
+        "@id": "https://orcid.org/0000-0002-2702-3419"
+      },
+      {
+        "@id": "https://orcid.org/0000-0002-3145-9880"
+      },
+      {
+        "@id": "https://orcid.org/0000-0001-8174-7795"
+      },
+      {
+        "@id": "_:Nda10c5ecbef84b65b8015a979111ed93"
+      }
+    ],
+    "https://schema.org/codeRepository": [
+      {
+        "@type": "https://schema.org/URL",
+        "@value": "https://github.com/hermes-hmc/hermes"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "Proof-of-concept implementation of the HERMES workflow."
+      }
+    ],
+    "https://schema.org/hasPart": [
+      {
+        "@id": "_:Ncf37313a1e0340efabab1d373b7658b6"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@value": "https://spdx.org/licenses/Apache-2.0"
+      }
+    ],
+    "https://schema.org/version": [
+      {
+        "@value": "proof-of-concept"
+      }
+    ]
+  },
+  {
+    "@id": "_:Ncf37313a1e0340efabab1d373b7658b6",
+    "@type": [
+      "https://schema.org/CreativeWork",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://schema.org/associatedMedia": [
+      {
+        "@id": "_:Ndfd4d1a0eed24ccfb2f0f32df4abbed4"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "README"
+      }
+    ]
+  },
+  {
+    "@id": "_:Ndfd4d1a0eed24ccfb2f0f32df4abbed4",
+    "@type": [
+      "https://schema.org/TextObject",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://schema.org/encodingFormat": [
+      {
+        "@value": "text/markdown"
+      }
+    ],
+    "https://schema.org/url": [
+      {
+        "@type": "https://schema.org/URL",
+        "@value": "https://raw.githubusercontent.com/softwarepub/hermes/proof-of-concept/README.md"
+      }
+    ]
+  },
+  {
+    "@id": "_:N538b305b81934ae391b8cef6677ba07e",
+    "@type": [
+      "https://schema.org/Organization",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "HERMES Team"
+      }
+    ]
+  },
+  {
+    "@id": "_:Nda10c5ecbef84b65b8015a979111ed93",
+    "@type": [
+      "https://schema.org/Person",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://schema.org/affiliation": [
+      {
+        "@id": "_:N8772291b30d041d9b1a5633fbbf68439"
+      }
+    ],
+    "https://schema.org/email": [
+      {
+        "@value": "gitlab-admin+bot@hzdr.de"
+      }
+    ],
+    "https://schema.org/givenName": [
+      {
+        "@value": "HIFIS Bot"
+      }
+    ]
+  },
+  {
+    "@id": "_:N8772291b30d041d9b1a5633fbbf68439",
+    "@type": [
+      "https://schema.org/Organization",
+      "http://www.w3.org/2000/01/rdf-schema#Resource"
+    ],
+    "https://schema.org/legalName": [
+      {
+        "@value": "Helmholtz Federated IT Services (HIFIS)"
+      }
+    ]
+  }
+]

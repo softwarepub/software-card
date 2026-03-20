@@ -1,116 +1,108 @@
-function extract_info(element, obj, tag, category){
-  fetch("../.hermes/process/tags.json")//.hermes/process/hermes.json")
-  .then(response => response.json())
-  .then(tags => {
-    if(typeof obj === "string" || typeof obj == "number"){
-      element.appendChild(document.createTextNode(` ${obj}`));
-      tag.appendChild(document.createTextNode(`${tags[category]["local_path"]}`));
-    }
-    else if(typeof obj === "object" && Array.isArray(obj) === false){
-      element.appendChild(document.createTextNode(` ${JSON.stringify(obj)}`));
-      tag.appendChild(document.createTextNode("Blocker"));
-    }
-    else if(Array.isArray(obj) && Object.keys(obj[0]).includes("familyName")){
-      const divTag = document.createElement("div");
-      divTag.classList.add("elements");
-      obj.forEach(e =>{
-        //const name = e.exec("familyName");
-        extract_person(e, element);
-        const tag = document.createElement("div");
-        tag.classList.add("tooltip");
-        tag.appendChild(document.createTextNode("See Person"));
-        divTag.appendChild(tag);
-      })
-      tag.appendChild(divTag);
-    }
-    else{
-      const names = [];
-      const div = document.createElement("div");
-      div.classList.add("elements");
-      const divTag = document.createElement("div");
-      div.classList.add("elements");
-      obj.forEach(e =>{
-  
-        names.push(JSON.stringify(e).replaceAll("{","").replaceAll("}",""));
-        const element = document.createElement("div");
-        element.appendChild(document.createTextNode(` ${JSON.stringify(e).replaceAll("{","").replaceAll("}","").replaceAll('"',"")}`));
-        div.appendChild(element);
+function extract_info(cell, obj, tag, colorPolicies){
+      if(!Array.isArray(obj)){
+        obj = [obj];
+      }
+      if(typeof obj[0] === "string" || typeof obj[0] == "number" || typeof obj[0] == "boolean"){
+        if(obj[2] && obj[2]["conflict"]){
+          const element = document.createElement("div");
+          element.style.color = colorPolicies[obj[2]["conflict"]];
+          element.appendChild(document.createTextNode(` ${obj[0]}`));
+          cell.appendChild(element);
+        }else{
+        cell.appendChild(document.createTextNode(` ${obj[0]}`));
+        }
+        
+      }
+      else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
+          obj.forEach(e =>{
+            const element = document.createElement("div");
+            extract_person(e, element, tag, colorPolicies);
+            cell.appendChild(element);
 
-        const tag = document.createElement("div");
-        tag.appendChild(document.createTextNode("Blocker"));
-        divTag.appendChild(tag);
-      })
-      //const text = document.createTextNode(` ${names}`);
-      element.appendChild(div);
-      tag.appendChild(divTag);
-    }
-  })
-}
+          })}
+      else if(Array.isArray(obj[0])){
+          obj[0].forEach(e =>{
+          const element = document.createElement("div");
+          extract_info(element, e, tag);
+          //element.appendChild(document.createTextNode(`hh ${e}`));
+          cell.appendChild(element);
+          
 
-  function extract_person(e, element){
+        })
+          }
+      else{
+          const div = document.createElement("div");
+          for (let key in obj[0]) {
+            if(typeof obj[0][key]=== "string" || typeof obj[0][key] == "number"){
+            div.appendChild(document.createTextNode(`${key}: ${(obj[0][key])}`));
+            }else{
+              div.appendChild(document.createTextNode(`${key}: `));
+              extract_info(div, obj[0][key], tag, colorPolicies); 
+            }
+            div.appendChild(document.createElement("br"));
+          }
+          cell.appendChild(div);
+      }
+      if(obj[1] && Object.keys(obj[1]).includes("local_path")){
+        const divTag = document.createElement("div");
+        divTag.classList.add("tag");
+        divTag.appendChild(document.createTextNode(`${obj[1]["local_path"]}`));
+        tag.appendChild(divTag);
+      }
+
+    }
+
+  function extract_person(e, element, tag, colorPolicies){
     const tooltip = document.createElement("div");
+    const tooltiptag = document.createElement("div");
     tooltip.classList.add("tooltip");
     tooltip.onclick = function(){link_to_person(e)};
     const tooltiptext = document.createElement("div");
     tooltiptext.classList.add("tooltiptext");
-    const text = document.createTextNode(`${e.familyName}, ${e.givenName} `);
-    if(e.familyName === "Sophie"){
-      tooltip.className += " error"
+    const text = document.createTextNode(`${e.familyName[0]}, ${e.givenName[0]} `);
+    tooltiptag.appendChild(document.createTextNode("See Details"));
+    tooltiptag.appendChild(document.createElement("br"));
+    tooltiptag.onclick = function(){link_to_person(e)};
+    tag.appendChild(tooltiptag);
+    //const data = JSON.stringify(e, null, 2);
+
+    const names = [];
+    Object.keys(e).forEach(k => {
+      const pair = document.createElement("p");
+      if(!Array.isArray(e[k])){
+        for (let key in e[k]) {
+        const pair_in_list = document.createElement("p");
+        names.push(`${k}:${key}:  ${e[k][key][0]}`); 
+        pair_in_list.appendChild(document.createTextNode(`${k}:${key}:  ${e[k][key][0]}`));
+        if(e[k][key][2] && e[k][key][2]["conflict"]){
+          pair_in_list.style.color = colorPolicies[e[k][key][2]["conflict"]];
+          tooltiptag.style.color = colorPolicies[e[k][key][2]["conflict"]];
+          /*pair_in_list.className += " error";
+          tooltiptag.className += " error";*/
+        }
+        pair.appendChild(pair_in_list);
+      }
+      }else{
+      names.push(`${k}:  ${e[k][0]}`); 
+      pair.appendChild(document.createTextNode(`${k}:  ${e[k][0]}`));
+      
+      if(e[k][2] && e[k][2]["conflict"]){
+        pair.style.color = colorPolicies[e[k][2]["conflict"]];
+        tooltiptag.style.color = colorPolicies[e[k][2]["conflict"]];
+        //pair.className += " error";
+        //tooltiptag.className += " error";
+      }
     }
-    const data = JSON.stringify(e, null, 2);
-    tooltiptext.appendChild(document.createTextNode(`${data.replaceAll("{","\t").replaceAll("}","\t")}`)); //{.*\n*\t*.*\n*}
+    tooltiptext.appendChild(pair);
+    })
+    //tooltiptext.appendChild(document.createTextNode(`${names.toString().replaceAll(",","\n")}`));
     tooltip.appendChild(tooltiptext);
     tooltip.appendChild(text);
     element.appendChild(tooltip);
   }
 
   function link_to_person(data){
-    document.body.innerHTML = '<p id="test"></p><div id="content"><div id="hermes"></div><div id="tags"></div></div><button onClick="window.location.reload();">Go Back</button>';
-        document.getElementById("test").innerHTML = 'Person <b>'+data.familyName+'</b>';
-        const keys = Object.keys(data);
-        const hermes = document.getElementById("hermes");
-        const tbl = document.createElement("table");
-        const tblBody = document.createElement("tbody");
-        
-        const tags = document.getElementById("tags");
-        const tblTags = document.createElement("table");
-        const tblBodyTags = document.createElement("tbody");
-      
-        // creating all cells
-        keys.forEach(element => {
-          // creates a table row
-          const row = document.createElement("tr");   
-          const rowTags = document.createElement("tr");
-      
-            const cell = document.createElement("td");
-            const cell2 = document.createElement("td");
-            const cellText = document.createTextNode(` ${element}`);
-            const cellText2 = document.createElement('div');
-
-            const cellTag = document.createElement("td");
-            const cellTextTag = document.createElement('div');
-
-            extract_info(cellText2, data[element], cellTextTag, "author[0]."+element);
-            //cellText2.appendChild(document.createTextNode(` ${data.affiliation[element]}`));
-            cell.appendChild(cellText);
-            cell2.appendChild(cellText2);
-            row.appendChild(cell);
-            row.appendChild(cell2);
-
-            cellTag.appendChild(cellTextTag);
-            rowTags.appendChild(cellTag);
-
-
-      
-          // add the row to the end of the table body
-          tblBody.appendChild(row);
-          tblBodyTags.appendChild(rowTags);
-        })
-        tbl.appendChild(tblBody);
-        hermes.appendChild(tbl);
-
-        tblTags.appendChild(tblBodyTags);
-        tags.appendChild(tblTags);
-
+    window.location.href += `?id=${data["@id"][0]}`;
   }
+
   export {extract_info};

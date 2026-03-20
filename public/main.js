@@ -15,4 +15,10 @@ window.onload = async function () {
         await deleteAllPipelines();
         window.location = "./";
     }
+    
+    const clearPipelineDataButton = document.getElementById("clear-pipeline-button");
+    clearPipelineDataButton.onclick = async function() {
+        await deleteAllPipelines();
+        window.location = "./";
+    }
 }
