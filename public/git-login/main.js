@@ -1,7 +1,7 @@
 import * as User from "/modules/user.js"
 
 window.onload = async function () {
-    // setup site when user is already logged in
+    // Setup site when user is already logged in
     const savedToken = User.getApiToken();
     if (savedToken) {
         document.getElementById("token-input").value = savedToken;
@@ -12,7 +12,7 @@ window.onload = async function () {
         alreadyKnownText.innerHTML = `You are already authenticated as ${name} (<code>${username}</code>).`;
     }
 
-    // token save button onclick
+    // Token save button onclick
     var saveButton = document.getElementById("token-save-button");
     saveButton.onclick = async function () {
         var tokenInput = document.getElementById("token-input");
