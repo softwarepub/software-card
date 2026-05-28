@@ -1,3 +1,5 @@
-export function add_to_batch(value, comment){
-    alert(`${value}, ${comment}`);
+import { addComment } from '../modules/storage.js'
+
+export async function addToBatch(value, comment){
+    addComment(value, comment);
 }

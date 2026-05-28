@@ -8,6 +8,8 @@ function getDatabase() {
             var pipelineQueue = database.createObjectStore("PipelineQueue", { autoIncrement: true });
             pipelineQueue.createIndex("PipelineIdIndex", ["pipelineId"]);
 
+            var commentQueue = database.createObjectStore("CommentQueue", { autoIncrement: true });
+            commentQueue.createIndex("CommentIdIndex", ["commentId"]);
             // It would also be nice to have an index to return only entries where imported: false.
             // However, booleans are not valid keys. See:
             // https://w3c.github.io/IndexedDB/#key-construct
@@ -92,6 +94,62 @@ async function retrievePipeline() {
     return new Promise();
 }
 
+function addCommentToQueue(queue, index, value, comment) {
+    return new Promise((resolve,reject) => {
+        queue.put({
+            value: value,
+            comment: comment,
+            imported: false
+        });     
+        resolve(); 
+        });
+}
+
+async function addComment(value, comment) {
+    try {
+        var database = await getDatabase();
+        var queue = await getDatabaseStore(database, "CommentQueue");
+        var index = await getStoreIndex(queue, "CommentIdIndex");
+        addCommentToQueue(queue, index, value, comment);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function getUnregisteredCommentFromQueue(queue) {
+    return new Promise((resolve, reject) => {
+        var comments = queue.openCursor();
+
+        comments.onsuccess = (event) => {
+
+            const cursor = event.target.result;
+            if (cursor) {
+                const comment = cursor.value;
+
+                cursor.delete();
+                
+                resolve(comment);
+                return;
+            }
+            
+            resolve(null);
+        };
+
+        comments.onerror = (event) => { reject("Search for unimported comments failed") };
+    });
+}
+
+async function retrieveComment() {
+    try {
+        var database = await getDatabase();
+        var queue = await getDatabaseStore(database, "CommentQueue");
+        return getUnregisteredCommentFromQueue(queue);
+    } catch (error) {
+        console.error(error);
+    }
+    return null;
+}
+
 function deleteDatabase(name) {
     return new Promise((resolve, reject) => {
         var deletion = indexedDB.deleteDatabase(name);
@@ -109,4 +167,4 @@ async function deleteAllPipelines() {
     }
 }
 
-export { registerPipeline, retrievePipeline, deleteAllPipelines }
+export { registerPipeline, retrievePipeline, deleteAllPipelines, addComment, retrieveComment }

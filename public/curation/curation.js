@@ -1,5 +1,5 @@
 import { extract_info } from "./extract.js";
-import { add_to_batch } from "./safe_comments.js";
+import { addToBatch } from "./safe_comments.js";
 
 /**
 * Fetches json_document and displays their contents in a table.
@@ -108,9 +108,8 @@ export function displayJSON(json_document){
               slcommentPopup = mvalue.querySelector("#single-line-comment-popup");
         const input = mvalue.querySelector("#comment");
         mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
-            add_to_batch(element, input.value);
+            addToBatch(element, input.value);
           });
-        //slcommentPopup.style.visibility = "visible";
         slcomment.addEventListener('click', (event)=>{
           event.stopPropagation();
           console.log("clicked");
