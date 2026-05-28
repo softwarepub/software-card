@@ -221,13 +221,17 @@ button{
 .show {display:block;}
 
 tr:hover .single-line-comment{
-  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 .single-line-comment{
   position:absolute;
   right: 20%;
-  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
 }
+
 .single-line-comment:hover .hover-text{
   visibility: visible;
 }
@@ -252,6 +256,33 @@ margin-right: 5px;
 border-width: 5px;
 border-style: solid;
 border-color: transparent transparent #555 transparent;
+}
+
+.single-line-comment-popup{
+  position: absolute;
+  visibility: hidden;
+  background-color: #bababa;
+  padding: 5px;
+  border-radius: 12px;
+  top: 17px;
+  left: -250px;
+  z-index: 1;
+}
+.single-line-comment-popup::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent #bababa transparent;
+}
+
+input[type=text]{
+  width:500px;
+  border-radius: 12px;
 }
 
 #conflict{

@@ -72,8 +72,16 @@
                         <tr>
                             <td id="key"></td>
                             <td id="value">
-                                <div class="single-line-comment">+
+                                <div class="single-line-comment" id="single-line-comment">+
                                     <p class="hover-text">Comment on this row</p>
+                                
+                                    <div class="single-line-comment-popup" id="single-line-comment-popup">
+                                            <div class="label-input">
+                                                <label for="name">Comment:</label><br>
+                                                <input type="text" id="comment" name="comment" required><br>
+                                            </div> 
+                                            <input type="submit" value="Add to batch">
+                                    </div>
                                 </div>
                             </td>
                             <td id="tag"></td>
