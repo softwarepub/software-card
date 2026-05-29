@@ -1,10 +1,11 @@
 import { deleteAllPipelines } from "./modules/storage.js";
+import * as User from "/modules/user.js"
 
 window.onload = async function () {
-    const gitLabName = localStorage.getItem("gitlab-name");
-    if (gitLabName) {
+    const username = User.getName() || User.getUsername();
+    if (username) {
         const welcomeUsernameSpan = document.getElementById("welcome-username");
-        welcomeUsernameSpan.innerText = ", " + gitLabName;
+        welcomeUsernameSpan.innerText = ", " + username;
     }
 
     const clearAllDataButton = document.getElementById("clear-all-data-button");
