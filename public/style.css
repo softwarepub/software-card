@@ -55,61 +55,86 @@ button{
     justify-content: center;
 }
 
-.conflict-operators{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+.operators{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.tooltip {
+.navigation{
+  position: absolute;
+  font-size: larger;
+  top:5%;
+  right:3%;
+  display: flex;
+  flex-direction: row;
+}
+
+.notes{
+  right: 5%;
+  cursor: pointer;
+}
+.notes:hover .notes-desc{
+  visibility: visible;
+}
+.notes-desc{
+  font-size: medium;
+  position: absolute;
+  width: 300px;
+  padding: 0px;
+  right: 1px;
+  text-align: end;
+  visibility: hidden;
+}
+
+.swc-tooltip {
     position: relative;
     border-bottom: 1px dotted black;
     white-space:pre-wrap;
 }
   
-.tooltip .tooltiptext {
-    visibility: hidden;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    position: absolute;
-    z-index: 1;
-    width: 80%;
-    padding: 10px;
-    bottom: 125%;
-    left: 10%;
-    opacity: 0;
-    transition: opacity 0.3s;
-    border-radius: 12px;
+.swc-tooltip .swc-tooltiptext {
+visibility: hidden;
+background-color: #555;
+color: #fff;
+text-align: center;
+position: absolute;
+z-index: 1;
+width: 80%;
+padding: 10px;
+bottom: 125%;
+left: 10%;
+opacity: 0;
+transition: opacity 0.3s;
+border-radius: 12px;
+}
+.swc-tooltip .swc-tooltiptext p{
+font-size: large;
+margin: 0px;
 }
 
-.tooltip .tooltiptext p {
-    font-size: large;
-    margin: 0px;
+.swc-tooltip .swc-tooltiptext::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: #555 transparent transparent transparent;
 }
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    margin-right: 5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+.swc-tooltip:hover .swc-tooltiptext {
+visibility: visible;
+opacity: 1;
 }
 
 button {
     top: 100%;
     border-radius: 12px;
-    background-image: -webkit-linear-gradient(166.66deg, rgb(34, 198, 227) 4.62%, rgb(23, 124, 207) 10.62%, rgb(116, 75, 196) 86.29%);
+    background-color:  rgb(23, 124, 207) ;
     color: white;
     border-color: white;
     padding: 10px;
@@ -151,7 +176,8 @@ button:disabled {
   text-align: center;
   background-image: none;
   background-color: #ddd;
-  color:black
+  color:black;
+  padding: 0px;
 
 }
 
@@ -178,8 +204,8 @@ button:disabled {
 .dropdown {
   position: relative;
   display: inline-block;
-  left: 41%;
-  top: -15px;
+  left: 36%;
+  top: 10px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -206,3 +232,80 @@ button:disabled {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+tr:hover .single-line-comment{
+  opacity: 1;
+  pointer-events: auto;
+}
+.single-line-comment{
+  position:absolute;
+  right: 20%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.single-line-comment:hover .hover-text{
+  visibility: visible;
+}
+
+.hover-text{
+  visibility: hidden;
+  position: relative;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 2px;
+  border-radius: 6px;
+  z-index: 1;
+}
+.hover-text::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent #555 transparent;
+}
+
+.single-line-comment-popup{
+  position: absolute;
+  visibility: hidden;
+  background-color: #bababa;
+  padding: 5px;
+  border-radius: 12px;
+  top: 17px;
+  left: -250px;
+  z-index: 1;
+}
+.single-line-comment-popup::after {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -5px;
+margin-right: 5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent #bababa transparent;
+}
+
+input[type=text]{
+  width:500px;
+  border-radius: 12px;
+}
+
+#conflict{
+  display: flex;
+  flex-direction: row;
+}
+
+.comment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,4 +1,5 @@
 import { extract_info } from "./extract.js";
+import { addToBatch } from "./safe_comments.js";
 
 /**
 * Fetches json_document and displays their contents in a table.
@@ -102,6 +103,24 @@ export function displayJSON(json_document){
           extract_info(mvalue, data[element], mtag, colorPolicies);
 
           tbody.appendChild(row);
+
+        const slcomment = mvalue.querySelector("#single-line-comment"),
+              slcommentPopup = mvalue.querySelector("#single-line-comment-popup");
+        const input = mvalue.querySelector("#comment");
+        mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
+            addToBatch(element, data[element], input.value);
+          });
+        slcomment.addEventListener('click', (event)=>{
+          event.stopPropagation();
+          console.log("clicked");
+          slcommentPopup.style.visibility = "visible";
+        })
+        document.addEventListener('click', function(e) {
+          if ( slcommentPopup.style.visibility === "visible"  && !slcommentPopup.contains(e.target) ) {
+              slcommentPopup.style.visibility = "hidden";
+          }
+        })
+
       })
   })
   //Extend Checkbox for metadata source
@@ -116,6 +135,8 @@ export function displayJSON(json_document){
 
 
 }
+
+
 
 /**
 * Function to get a smaller object from the orginal object.
