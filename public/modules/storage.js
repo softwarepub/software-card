@@ -94,10 +94,11 @@ async function retrievePipeline() {
     return new Promise();
 }
 
-function addCommentToQueue(queue, index, value, comment) {
+function addCommentToQueue(queue, index, value, data, comment) {
     return new Promise((resolve,reject) => {
         queue.put({
             value: value,
+            data: data,
             comment: comment,
             imported: false
         });     
@@ -105,12 +106,12 @@ function addCommentToQueue(queue, index, value, comment) {
         });
 }
 
-async function addComment(value, comment) {
+async function addComment(value, data, comment) {
     try {
         var database = await getDatabase();
         var queue = await getDatabaseStore(database, "CommentQueue");
         var index = await getStoreIndex(queue, "CommentIdIndex");
-        addCommentToQueue(queue, index, value, comment);
+        addCommentToQueue(queue, index, value, data, comment);
     } catch (error) {
         console.error(error);
     }

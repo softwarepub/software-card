@@ -108,7 +108,7 @@ export function displayJSON(json_document){
               slcommentPopup = mvalue.querySelector("#single-line-comment-popup");
         const input = mvalue.querySelector("#comment");
         mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
-            addToBatch(element, input.value);
+            addToBatch(element, data[element], input.value);
           });
         slcomment.addEventListener('click', (event)=>{
           event.stopPropagation();
