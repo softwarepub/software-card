@@ -18,11 +18,8 @@ function extract_info(cell, obj, tag, colorPolicies){
       else if(!Array.isArray(obj[0]) && Object.keys(obj[0]).includes("familyName")){
           obj.forEach(e =>{
             const element = document.createElement("div");
-            const hasConfict = extract_person(e, element, tag, colorPolicies);
+            extract_person(e, element, tag, colorPolicies);
             cell.appendChild(element);
-            /*if (hasConfict){
-              cell.classList.add("table-warning");
-            }*/
 
           })}
       else if(Array.isArray(obj[0])){
