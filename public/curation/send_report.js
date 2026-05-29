@@ -1,4 +1,5 @@
 import { retrieveComment, retrievePipeline } from "../modules/storage.js";
+import * as User from "/modules/user.js"
 import { Octokit } from "https://esm.sh/@octokit/rest";
 
 
@@ -14,7 +15,7 @@ async function sendReport(){
 
 ${comment.comment}
 <table><tr>
-<td>${comment.value}</td><td>${json.stringify(comment.data[0])}</td>
+<td>${comment.value}</td><td>${JSON.stringify(comment.data[0])}</td>
 </tr></table>
 
 `;
@@ -26,18 +27,21 @@ ${comment.comment}
 
 
   const token = localStorage.getItem("gitlab-api-token");
-  const username = localStorage.getItem("gitlab-username");
+  const username = User.getUsername();
+  const platform = User.getGitPlatform(); 
+  console.log(platform);
   var [projectId, pipelineId, jobId] = await retrievePipeline();
-  if(token.startsWith("glpat")){
-    issueGitlab(token, projectId, message);
-  }else{
+  if(platform.host == "github"){
     issueGithub(token, username, message);
+  }else{
+    issueGitlab(platform, token, projectId, message);
   }
 }
 
-async function issueGitlab(token, projectId, message){
+async function issueGitlab(platform, token, projectId, message){
+    console.log(platform.apiUrl); 
 const response = await fetch(
-        `https://codebase.helmholtz.cloud/api/v4/projects/${projectId}/issues`,
+        `${platform.apiUrl}/projects/${projectId}/issues`,
         {
             method: "POST",
             headers: {
