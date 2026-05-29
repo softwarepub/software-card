@@ -130,7 +130,7 @@ opacity: 1;
 
 button{
     border-radius: 12px;
-    background-image: -webkit-linear-gradient(166.66deg, rgb(34, 198, 227) 4.62%, rgb(23, 124, 207) 10.62%, rgb(116, 75, 196) 86.29%);
+    background-color:  rgb(23, 124, 207) ;
     color: white;
     border-color: white;
     padding: 10px;
