@@ -56,6 +56,7 @@ const response = await fetch(
     );
 
     const data = await response.json();
+    alert("Send to GitLab");
 
 }
 async function issueGithub(token, username, message){

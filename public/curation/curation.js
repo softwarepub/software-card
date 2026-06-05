@@ -111,13 +111,20 @@ export function displayJSON(data){
         const slcomment = mvalue.querySelector("#single-line-comment"),
               slcommentPopup = mvalue.querySelector("#single-line-comment-popup");
         const input = mvalue.querySelector("#comment");
+                slcomment.addEventListener('click', (event)=>{
+          event.stopPropagation();
+          if (event.target !== slcomment.textContent) {
+              return;
+          }
+          slcommentPopup.style.visibility = "visible";
+          console.log("open");
+        })
         mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
             addToBatch(element, data[element], input.value);
+            slcommentPopup.style.visibility = "hidden";
+          console.log("hopen");
           });
-        slcomment.addEventListener('click', (event)=>{
-          event.stopPropagation();
-          slcommentPopup.style.visibility = "visible";
-        })
+
         document.addEventListener('click', function(e) {
           if ( slcommentPopup.style.visibility === "visible"  && !slcommentPopup.contains(e.target) ) {
               slcommentPopup.style.visibility = "hidden";

@@ -275,10 +275,11 @@ border-color: transparent transparent #555 transparent;
   position: absolute;
   visibility: hidden;
   background-color: #bababa;
+  color: white;
   padding: 5px;
   border-radius: 12px;
-  top: 17px;
-  left: -250px;
+  top: 22px;
+  left: -300%;
   z-index: 1;
 }
 .single-line-comment-popup::after {
@@ -291,6 +292,15 @@ margin-right: 5px;
 border-width: 5px;
 border-style: solid;
 border-color: transparent transparent #bababa transparent;
+}
+.single-line-comment-popup [type=submit] {
+    top: 100%;
+    border-radius: 12px;
+    background-color:  rgb(23, 124, 207) ;
+    color: white;
+    border-color: white;
+    padding: 4px;
+    margin-top: 5px;
 }
 
 input[type=text]{
