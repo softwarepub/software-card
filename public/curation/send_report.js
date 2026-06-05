@@ -59,15 +59,17 @@ const response = await fetch(
 
 }
 async function issueGithub(token, username, message){
+    const owner = localStorage.getItem("owner");
+    const repo = localStorage.getItem("repo");
     //TODO Test for Github
 const octokit = new Octokit({
     auth: token
   })
 
 try{
-        await octokit.request('POST /repos/SKernchen/SoftwareCaRD-Test/issues', {
-        owner: `${username}`,
-        repo: 'SoftwareCaRD-test',
+        await octokit.request(`POST /repos/${owner}/${repo}/issues`, {
+        owner: `${owner}`,
+        repo: `${repo}`,
         title: `Curation Report`,
         labels: ['curation'],
         body: message,

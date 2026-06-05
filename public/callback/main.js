@@ -11,10 +11,24 @@ window.onload = async function () {
             technicalInformationTextArea.value += key + ": " + value + "\n";
         });
     }
+    const token = localStorage.getItem("gitlab-api-token");
+
+    if(parameters.get("type")=="github"){
+        const owner = parameters.get("owner");
+        const repo = parameters.get("repo");
+        const artifactId = parameters.get("artifactId");
+        console.log(owner, repo, artifactId);
+        localStorage.setItem("owner", owner);
+        localStorage.setItem("repo", repo);
+        localStorage.setItem("artifactId", artifactId);
+        window.location = "../dashboard/";
+
+
+    }else{
 
     const gitLabProjectId = parameters.get("gitlab_project_id");
     
-    const get_latest = parameters.get("latest");
+    let get_latest = parameters.get("latest");
 
     const gitLabPipelineId = parameters.get("gitlab_pipeline_id");
     const gitLabJobId = parameters.get("gitlab_job_id");
@@ -27,7 +41,6 @@ window.onload = async function () {
         await new Promise(r => setTimeout(r, 5000));
     }
 
-    const token = localStorage.getItem("gitlab-api-token");
     if (token) {
         if(get_latest==1){
             await latest(gitLabProjectId, token);
@@ -37,9 +50,12 @@ window.onload = async function () {
         return;
     } else {
         alert("Please set up the GitLab connection, then go to the dashboard!");
-        window.location = "../gitlab-setup/";
+        window.location = "../git-login/";
         return;
     }
+}
+
+    
 
     
 }

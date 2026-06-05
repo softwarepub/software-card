@@ -5,10 +5,7 @@ import { addToBatch } from "./safe_comments.js";
 * Fetches json_document and displays their contents in a table.
 * @param {Path} json_document - document do fetch data from.
 */
-export function displayJSON(json_document){
-  fetch(json_document)
-  .then(response => response.json())
-  .then(data => {
+export function displayJSON(data){
       const colorPalette = ["rgb(34, 198, 227)", "purple", "rgb(23, 124, 207)", "rgb(116, 75, 196)", "pink"];
       let colorPolicies = {"Curation": "red"};
       if(data["policies"]){
@@ -18,10 +15,16 @@ export function displayJSON(json_document){
       console.log(colorPolicies);
       //Get data snippet from url
       const params = new URLSearchParams(location.search);
-      if(params.has("id")){
-        const id = params.get("id")
-        data = get_data_snippet(data, "@id", id);
-
+      console.log(params);
+      if(params.size > 0){
+        for (const [key, value] of params) {
+          console.log("search for",key, value);
+          data = get_data_snippet(data, key, value);
+          }
+        
+           
+        
+        
         //If your seeing a data snippet, create button to go back
         const back = document.createElement("button");
         back.innerText = "Back to Overview";
@@ -122,7 +125,7 @@ export function displayJSON(json_document){
         })
 
       })
-  })
+
   //Extend Checkbox for metadata source
   const checkbox = document.querySelector("#extended");
   checkbox.addEventListener('change', (event)=>{
@@ -160,5 +163,6 @@ function get_data_snippet(data, skey, svalue){
       }
     }
   }
+  console.log(data);
   return data;
 }

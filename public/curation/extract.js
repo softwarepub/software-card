@@ -105,7 +105,12 @@ function extract_info(cell, obj, tag, colorPolicies){
   }
 
   function link_to_person(data){
-    window.location.href += `?id=${data["@id"][0]}`;
+    if(data["@id"]){
+    window.location.href += `?@id=${data["@id"][0]}`;
+  }else{
+    window.location.href += `?familyName=${data["familyName"][0]}`;
+  }
+
   }
 
   export {extract_info};
