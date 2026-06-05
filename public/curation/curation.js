@@ -113,16 +113,14 @@ export function displayJSON(data){
         const input = mvalue.querySelector("#comment");
                 slcomment.addEventListener('click', (event)=>{
           event.stopPropagation();
-          if (event.target !== slcomment.textContent) {
+          if (event.target !== slcomment) {
               return;
           }
           slcommentPopup.style.visibility = "visible";
-          console.log("open");
         })
         mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
             addToBatch(element, data[element], input.value);
             slcommentPopup.style.visibility = "hidden";
-          console.log("hopen");
           });
 
         document.addEventListener('click', function(e) {
