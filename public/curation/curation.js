@@ -22,9 +22,6 @@ export function displayJSON(data){
           data = get_data_snippet(data, key, value);
           }
         
-           
-        
-        
         //If your seeing a data snippet, create button to go back
         const back = document.createElement("button");
         back.innerText = "Back to Overview";
@@ -46,10 +43,16 @@ export function displayJSON(data){
 
       
       keys.forEach(element => { 
+        
         // Get a something with Name as p Header
+        console.log(element);
         if(element.toLowerCase().includes("name")){
+          if(!Array.isArray(data[element])){
+          document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element]+'</b>';
+      }else{
           document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element][0]+'</b>';
-        }
+      }
+    }
         // Apply and fill in the template for Policies 
         if(element=="policies"){
           header.style.display = "block";
@@ -155,8 +158,14 @@ function get_data_snippet(data, skey, svalue){
     const obj = stack.pop();
     for(let i=0; i<Object.keys(obj).length; i++){
       let key = Object.keys(obj)[i];
-      if(key==skey && obj[key][0]==svalue){
+      if(!Array.isArray(obj[key])){
+      if(key==skey && obj[key]==svalue){
         return obj;
+      }
+      }else{
+        if(key==skey && obj[key][0]==svalue){
+        return obj;
+      }
       }
       if (typeof obj[key] === 'object' && obj[key] !== null) {
         stack.push(obj[key]);

@@ -62,6 +62,12 @@ function extract_info(cell, obj, tag, colorPolicies){
     tooltip.onclick = function(){link_to_person(e)};
     const tooltiptext = document.createElement("div");
     tooltiptext.classList.add("swc-tooltiptext");
+    Object.keys(e).forEach(k => {
+      if(!Array.isArray(e[k]) && typeof e[k] === "string"){
+      e[k] = [e[k]];
+    }
+    })
+    
     const text = document.createTextNode(`${e.familyName[0]}, ${e.givenName[0]} `);
     tooltiptag.appendChild(document.createTextNode("See Details"));
     tooltiptag.appendChild(document.createElement("br"));
@@ -75,6 +81,12 @@ function extract_info(cell, obj, tag, colorPolicies){
       if(!Array.isArray(e[k])){
         for (let key in e[k]) {
         const pair_in_list = document.createElement("p");
+        if(!Array.isArray(e[k][key]) && typeof e[k][key] === "string"){
+          names.push(`${k}:${key}:  ${e[k][key]}`); 
+        pair_in_list.appendChild(document.createTextNode(`${k}:${key}:  ${e[k][key]}`));
+        
+        }
+        else{
         names.push(`${k}:${key}:  ${e[k][key][0]}`); 
         pair_in_list.appendChild(document.createTextNode(`${k}:${key}:  ${e[k][key][0]}`));
         if(e[k][key][2] && e[k][key][2]["conflict"]){
@@ -82,7 +94,7 @@ function extract_info(cell, obj, tag, colorPolicies){
           tooltiptag.style.color = colorPolicies[e[k][key][2]["conflict"]];
           hasConfict = true;
           
-        }
+        }}
         pair.appendChild(pair_in_list);
       }
       }else{
@@ -106,8 +118,14 @@ function extract_info(cell, obj, tag, colorPolicies){
 
   function link_to_person(data){
     if(data["@id"]){
+      if(!Array.isArray(data["@id"])){
+        data["@id"] = [data["@id"]];
+      }
     window.location.href += `?@id=${data["@id"][0]}`;
   }else{
+    if(!Array.isArray(data["familyName"])){
+        data["familyName"] = [data["familyName"]];
+      }
     window.location.href += `?familyName=${data["familyName"][0]}`;
   }
 

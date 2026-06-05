@@ -16,4 +16,9 @@ drawRadar(ctx, canvas.offsetWidth/2,canvas.offsetHeight/2, [15,15,10,15,15,12], 
 drawRadar(ctx, canvas.offsetWidth/2,canvas.offsetHeight/2, [20,20,9,10,20,15], "blue", "rgba(94, 148, 215, 0.34)");
 
 //View for Curation
-//displayJSON("../.hermes/process/transport.json");
+/*
+  fetch("../.hermes/process/transport.json")
+  .then(response => response.json())
+  .then(data => {
+    displayJSON(data);
+  })*/
