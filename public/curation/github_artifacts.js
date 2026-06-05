@@ -35,7 +35,6 @@ if (artifact.status !== 200) {
     alert("Fetching artifacts failed");
     }
 
-console.log(artifact, artifact.data);
 
 const response = await fetch(artifact.url);
 
@@ -51,7 +50,6 @@ const response = await fetch(artifact.url);
 
     do {
         var fileEntry = fileEntries.shift();
-        console.log(fileEntry)
         if (showDebugInformation) {
             console.log(fileEntry);
         }

@@ -15,7 +15,6 @@ export function displayJSON(data){
       console.log(colorPolicies);
       //Get data snippet from url
       const params = new URLSearchParams(location.search);
-      console.log(params);
       if(params.size > 0){
         for (const [key, value] of params) {
           console.log("search for",key, value);
@@ -45,7 +44,6 @@ export function displayJSON(data){
       keys.forEach(element => { 
         
         // Get a something with Name as p Header
-        console.log(element);
         if(element.toLowerCase().includes("name")){
           if(!Array.isArray(data[element])){
           document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element]+'</b>';
@@ -118,7 +116,6 @@ export function displayJSON(data){
           });
         slcomment.addEventListener('click', (event)=>{
           event.stopPropagation();
-          console.log("clicked");
           slcommentPopup.style.visibility = "visible";
         })
         document.addEventListener('click', function(e) {
@@ -172,6 +169,5 @@ function get_data_snippet(data, skey, svalue){
       }
     }
   }
-  console.log(data);
   return data;
 }

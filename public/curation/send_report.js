@@ -71,7 +71,6 @@ try{
         owner: `${owner}`,
         repo: `${repo}`,
         title: `Curation Report`,
-        labels: ['curation'],
         body: message,
         headers: {
           'X-GitHub-Api-Version': '2022-11-28'
