@@ -12,7 +12,7 @@ window.onload = async function () {
         });
     }
     const token = localStorage.getItem("gitlab-api-token");
-
+    console.log(window.location.search);
     if(parameters.get("type")=="github"){
         const owner = parameters.get("owner");
         const repo = parameters.get("repo");
@@ -21,7 +21,7 @@ window.onload = async function () {
         localStorage.setItem("owner", owner);
         localStorage.setItem("repo", repo);
         localStorage.setItem("artifactId", artifactId);
-        window.location = "../dashboard/";
+        window.location = "../curation/";
 
 
     }else{
