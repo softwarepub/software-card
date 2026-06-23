@@ -30,7 +30,7 @@ ${comment.comment}
   const username = User.getUsername();
   const platform = User.getGitPlatform(); 
   console.log(platform);
-  var [projectId, pipelineId, jobId] = await retrievePipeline();
+  const projectId = localStorage.getItem("repo");
   if(platform.host == "github"){
     issueGithub(token, username, message);
   }else{
