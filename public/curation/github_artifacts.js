@@ -19,7 +19,7 @@ async function githubArtifacts() {
   auth: token
 })
 
-//https://softwarepub.github.io/software-card/callback?type=github&owner=softwarepub&repo=software-card-showcase&artifactId=7291062769
+//https://softwarepub.github.io/software-card/callback/?type=github&owner=softwarepub&repo=software-card-showcase&artifactId=7291062769
 //https://github.com/softwarepub/software-card-showcase/actions/runs/26636754684/artifacts/7290497137
     // --- Job artifacts ---
 const artifact =  await octokit.request(`GET /repos/${owner}/${repo}/actions/artifacts/${artifactId}/zip`, {
