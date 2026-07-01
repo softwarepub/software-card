@@ -1,4 +1,3 @@
-import { registerPipeline } from '../modules/storage.js'
 
 const showDebugInformation = false;
 
@@ -11,53 +10,30 @@ window.onload = async function () {
             technicalInformationTextArea.value += key + ": " + value + "\n";
         });
     }
+    const token = localStorage.getItem("git-api-token");
+    const instanceType = parameters.get("type");
+    localStorage.setItem("instance-type", instanceType);
+    if(instanceType=="github"){
+        const owner = parameters.get("owner");
+        const repo = parameters.get("repo");
+        const artifactId = parameters.get("artifactId");
+        console.log(owner, repo, artifactId);
+        localStorage.setItem("owner", owner);
+        localStorage.setItem("repo", repo);
+        localStorage.setItem("artifactId", artifactId);
+        window.location = "../curation/";
 
-    const gitLabProjectId = parameters.get("gitlab_project_id");
-    
-    const get_latest = parameters.get("latest");
 
-    const gitLabPipelineId = parameters.get("gitlab_pipeline_id");
-    const gitLabJobId = parameters.get("gitlab_job_id");
+    }else{
+        const url = parameters.get("url");
+        const repo = parameters.get("repo");
+        const artifactId = parameters.get("artifactId");
+        console.log(url, repo, artifactId);
+        localStorage.setItem("url", url);
+        localStorage.setItem("repo", repo);
+        localStorage.setItem("artifactId", artifactId);
+        window.location = "../curation/";
 
-    if(get_latest != 1){
-    await registerPipeline(gitLabProjectId, gitLabPipelineId, gitLabJobId);
+
     }
-
-    if (showDebugInformation) {
-        await new Promise(r => setTimeout(r, 5000));
-    }
-
-    const token = localStorage.getItem("gitlab-api-token");
-    if (token) {
-        if(get_latest==1){
-            await latest(gitLabProjectId, token);
-        }else{
-        window.location = "../dashboard/";
-        }
-        return;
-    } else {
-        alert("Please set up the GitLab connection, then go to the dashboard!");
-        window.location = "../gitlab-setup/";
-        return;
-    }
-
-    
-}
-
-async function latest(projectId, token) {
-    const jobResponse = await fetch(
-        `https://codebase.helmholtz.cloud/api/v4/projects/${projectId}/jobs/`,
-        { headers: { "Content-Type": "application/json", "PRIVATE-TOKEN": token } }
-    );
-
-    if (!jobResponse.ok) {
-        alert("Fetching pipeline failed");
-        return;
-    }
-
-    const jobData = await jobResponse.json();
-    const jobId = jobData[0]["id"];
-    const pipelineId = jobData[0]["pipeline"]["id"];
-    
-    window.location = `../callback?gitlab_project_id=${projectId}&gitlab_pipeline_id=${pipelineId}&gitlab_job_id=${jobId}&latest=2`;
 }

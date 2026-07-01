@@ -5,10 +5,7 @@ import { addToBatch } from "./safe_comments.js";
 * Fetches json_document and displays their contents in a table.
 * @param {Path} json_document - document do fetch data from.
 */
-export function displayJSON(json_document){
-  fetch(json_document)
-  .then(response => response.json())
-  .then(data => {
+export function displayJSON(data){
       const colorPalette = ["rgb(34, 198, 227)", "purple", "rgb(23, 124, 207)", "rgb(116, 75, 196)", "pink"];
       let colorPolicies = {"Curation": "red"};
       if(data["policies"]){
@@ -18,10 +15,12 @@ export function displayJSON(json_document){
       console.log(colorPolicies);
       //Get data snippet from url
       const params = new URLSearchParams(location.search);
-      if(params.has("id")){
-        const id = params.get("id")
-        data = get_data_snippet(data, "@id", id);
-
+      if(params.size > 0){
+        for (const [key, value] of params) {
+          console.log("search for",key, value);
+          data = get_data_snippet(data, key, value);
+          }
+        
         //If your seeing a data snippet, create button to go back
         const back = document.createElement("button");
         back.innerText = "Back to Overview";
@@ -43,10 +42,15 @@ export function displayJSON(json_document){
 
       
       keys.forEach(element => { 
+        
         // Get a something with Name as p Header
         if(element.toLowerCase().includes("name")){
+          if(!Array.isArray(data[element])){
+          document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element]+'</b>';
+      }else{
           document.getElementById("project-name").innerHTML = element.charAt(0).toUpperCase() + element.slice(1) +' <b> '+data[element][0]+'</b>';
-        }
+      }
+    }
         // Apply and fill in the template for Policies 
         if(element=="policies"){
           header.style.display = "block";
@@ -107,14 +111,18 @@ export function displayJSON(json_document){
         const slcomment = mvalue.querySelector("#single-line-comment"),
               slcommentPopup = mvalue.querySelector("#single-line-comment-popup");
         const input = mvalue.querySelector("#comment");
-        mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
-            addToBatch(element, data[element], input.value);
-          });
-        slcomment.addEventListener('click', (event)=>{
+                slcomment.addEventListener('click', (event)=>{
           event.stopPropagation();
-          console.log("clicked");
+          if (event.target !== slcomment) {
+              return;
+          }
           slcommentPopup.style.visibility = "visible";
         })
+        mvalue.querySelector('input[type="submit"]').addEventListener("click", () => {
+            addToBatch(element, data[element], input.value);
+            slcommentPopup.style.visibility = "hidden";
+          });
+
         document.addEventListener('click', function(e) {
           if ( slcommentPopup.style.visibility === "visible"  && !slcommentPopup.contains(e.target) ) {
               slcommentPopup.style.visibility = "hidden";
@@ -122,7 +130,7 @@ export function displayJSON(json_document){
         })
 
       })
-  })
+
   //Extend Checkbox for metadata source
   const checkbox = document.querySelector("#extended");
   checkbox.addEventListener('change', (event)=>{
@@ -152,8 +160,14 @@ function get_data_snippet(data, skey, svalue){
     const obj = stack.pop();
     for(let i=0; i<Object.keys(obj).length; i++){
       let key = Object.keys(obj)[i];
-      if(key==skey && obj[key][0]==svalue){
+      if(!Array.isArray(obj[key])){
+      if(key==skey && obj[key]==svalue){
         return obj;
+      }
+      }else{
+        if(key==skey && obj[key][0]==svalue){
+        return obj;
+      }
       }
       if (typeof obj[key] === 'object' && obj[key] !== null) {
         stack.push(obj[key]);

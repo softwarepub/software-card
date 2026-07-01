@@ -1,6 +1,7 @@
 import {drawHexagon, drawRadar } from "../radar.js";
 import { displayJSON } from "./curation.js";
-
+import { githubArtifacts } from "./github_artifacts.js";
+import { gitlabArtifacts } from "./gitlab_artifacts.js";
 
 //Draw radar plot
 const canvas = document.getElementById('radar');
@@ -16,4 +17,14 @@ drawRadar(ctx, canvas.offsetWidth/2,canvas.offsetHeight/2, [15,15,10,15,15,12], 
 drawRadar(ctx, canvas.offsetWidth/2,canvas.offsetHeight/2, [20,20,9,10,20,15], "blue", "rgba(94, 148, 215, 0.34)");
 
 //View for Curation
-displayJSON("../.hermes/process/transport.json");
+const type = localStorage.getItem("instance-type");
+if(type=="github"){
+    githubArtifacts();
+}else if(type=="gitlab"){
+    gitlabArtifacts();
+}else{
+    fetch("../.hermes/process/transport.json")
+  .then(response => response.json())
+  .then(data => {
+    displayJSON(data);})
+}
