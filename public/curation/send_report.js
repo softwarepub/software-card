@@ -15,7 +15,7 @@ async function sendReport(){
 
 ${comment.comment}
 <table><tr>
-<td>${comment.value}</td><td>${JSON.stringify(comment.data[0])}</td>
+<td>${comment.value}</td><td>${JSON.stringify(comment.data)}</td>
 </tr></table>
 
 `;
