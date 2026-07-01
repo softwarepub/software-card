@@ -19,7 +19,7 @@ window.onload = async function () {
         const token = tokenInput.value.trim();
         if (token) {
             if (token === savedToken) {
-                window.location = "../";
+                window.location = "../curation/";
                 return;
             }
             const platform_name = User.getGitPlatformName();
@@ -46,18 +46,18 @@ window.onload = async function () {
             const userData = await response.json();
 
             if (platform.host == "gitlab") {
-                localStorage.setItem("gitlab-username", userData["username"]);
-                localStorage.setItem("gitlab-name", userData["name"]);
-                localStorage.setItem("gitlab-api-token", token);
+                localStorage.setItem("git-username", userData["username"]);
+                localStorage.setItem("git-name", userData["name"]);
+                localStorage.setItem("git-api-token", token);
                 User.setUser(platform_name, token, userData["username"], userData["name"]);
             } else {
-                localStorage.setItem("gitlab-username", userData["login"]);
-                localStorage.setItem("gitlab-name", userData["name"]);
-                localStorage.setItem("gitlab-api-token", token);
+                localStorage.setItem("git-username", userData["login"]);
+                localStorage.setItem("git-name", userData["name"]);
+                localStorage.setItem("git-api-token", token);
                 User.setUser(platform_name, token, userData["login"], userData["name"]);
             }
             
-            window.location = "../";
+            window.location = "../curation/";
             return;
         }
     };

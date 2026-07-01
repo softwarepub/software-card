@@ -4,7 +4,7 @@ import { displayJSON } from "./curation.js";
 const showDebugInformation = false;
 
 async function gitlabArtifacts () {
-    const token = localStorage.getItem("gitlab-api-token");
+    const token = localStorage.getItem("git-api-token");
     if (!token) {
         alert("Please set up the GitLab connection first!");
         window.location = "../";

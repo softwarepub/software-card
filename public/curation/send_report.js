@@ -1,4 +1,4 @@
-import { retrieveComment, retrievePipeline } from "../modules/storage.js";
+import { retrieveComment } from "../modules/storage.js";
 import * as User from "/modules/user.js"
 import { Octokit } from "https://esm.sh/@octokit/rest";
 
@@ -7,6 +7,32 @@ const report = document.getElementById("sendReport");
 report.addEventListener("click", sendReport);
 async function sendReport(){
   var message = "In [Software-CaRD](https://software-metadata.pub/software-card/) the following notes were added.\n";
+    if(localStorage.hasOwnProperty("instance-type")){
+        const repo = localStorage.getItem("repo", repo);
+        const artifactId = localStorage.getItem("artifactId", artifactId);
+
+        if (localStorage.getItem("instance-type") == "github"){
+          //callback/?type=github&owner=softwarepub&repo=software-card-showcase&artifactId=7291062769
+          const owner = localStorage.getItem("owner", owner);
+          message = `In [Software-CaRD](https://software-metadata.pub/software-card/callback/?type=github&owner=${owner}&repo=${repo}&artifactId=${artifactId}) the following notes were added.\n";`
+        }else if (localStorage.getItem("instance-type") == "gitlab"){
+          //callback?type=gitlab&url=https://codebase.helmholtz.cloud&repo=21313&artifactId=3159194
+          const url = localStorage.getItem("url", url);
+          message = `In [Software-CaRD](https://software-metadata.pub/software-card/callback/?type=gitlab&url=${url}&repo=${repo}&artifactId=${artifactId}) the following notes were added.\n";`
+        }else{
+          console.log("Something unexpected happend")
+          window.location = "./";
+        }
+
+
+    }else{
+      console.log("No repository is connected.");
+      alert("No Repository is connected. Please use the issue link with a callback");
+      window.location = "./";
+
+    }
+
+  
   var comment = await retrieveComment();
   while (comment !== null) {
 
@@ -26,7 +52,7 @@ ${comment.comment}
   console.log(message);
 
 
-  const token = localStorage.getItem("gitlab-api-token");
+  const token = localStorage.getItem("git-api-token");
   const username = User.getUsername();
   const platform = User.getGitPlatform(); 
   console.log(platform);
