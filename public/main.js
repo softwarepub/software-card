@@ -1,5 +1,5 @@
-import { deleteAllPipelines } from "./modules/storage.js";
-import * as User from "/modules/user.js"
+import { deleteAllPipelines as deleteAllComments } from "./modules/storage.js";
+import * as User from "./modules/user.js"
 
 window.onload = async function () {
     const username = User.getName() || User.getUsername();
@@ -12,13 +12,13 @@ window.onload = async function () {
     clearAllDataButton.onclick = async function() {
         localStorage.clear();
         console.log("Local storage cleared");
-        await deleteAllPipelines();
+        await deleteAllComments();
         window.location = "./";
     }
     
     const clearPipelineDataButton = document.getElementById("clear-pipeline-button");
     clearPipelineDataButton.onclick = async function() {
-        await deleteAllPipelines();
+        await deleteAllComments();
         window.location = "./";
     }
 }

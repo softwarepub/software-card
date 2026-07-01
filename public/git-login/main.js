@@ -1,4 +1,4 @@
-import * as User from "/modules/user.js"
+import * as User from "../modules/user.js"
 
 window.onload = async function () {
     // Setup site when user is already logged in
