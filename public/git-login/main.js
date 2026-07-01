@@ -96,7 +96,7 @@ window.onload = async function () {
         }
     }
 
-    const REDIRECT_URI = location.origin + location.pathname;
+    const REDIRECT_URI = window.location.origin + window.location.pathname;
     const SCOPE_GL     = "read_api";
     const SCOPE_GH     = "read:user user:email repo";
 
@@ -149,7 +149,7 @@ window.onload = async function () {
 
             const auth_url = new URL("/login/oauth/authorize", base_url);
             auth_url.search = params.toString();
-            console.debug("Authorize URL:", auth_url);
+            console.log("Authorize URL:", auth_url);
             location.assign(auth_url.toString());
 
         } else if (host == "gitlab") {
@@ -172,7 +172,7 @@ window.onload = async function () {
             });
 
             const auth_url = buildUrl(base_url, "/oauth/authorize", params);
-            console.debug("Authorize URL:", auth_url);
+            console.log("Authorize URL:", auth_url);
             location.assign(auth_url);
         }
     }

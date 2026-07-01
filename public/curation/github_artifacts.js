@@ -8,7 +8,7 @@ async function githubArtifacts() {
     const token = localStorage.getItem("git-api-token");
     if (!token) {
         alert("Please set up the GitLab connection first");
-        window.location = "../git-login/";
+        window.location = "./";
         return;
     }
     const owner = localStorage.getItem("owner");
