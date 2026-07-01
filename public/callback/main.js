@@ -21,7 +21,7 @@ window.onload = async function () {
         localStorage.setItem("owner", owner);
         localStorage.setItem("repo", repo);
         localStorage.setItem("artifactId", artifactId);
-        window.location = "../curation/";
+        window.location = "../git-login/";
 
 
     }else{
@@ -32,7 +32,7 @@ window.onload = async function () {
         localStorage.setItem("url", url);
         localStorage.setItem("repo", repo);
         localStorage.setItem("artifactId", artifactId);
-        window.location = "../curation/";
+        window.location = "../git-login/";
 
 
     }
